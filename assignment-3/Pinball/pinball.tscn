@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://buxknvxe6gbue"]
+
+[ext_resource type="Texture2D" uid="uid://d1pyrjenx4qx7" path="res://WIPTextures/Orange/texture_10.png" id="1_e78sp"]
+[ext_resource type="Script" uid="uid://btu0us7icgdi4" path="res://Pinball/pinball.gd" id="2_48gu3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6ii5"]
+albedo_texture = ExtResource("1_e78sp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dlyx"]
+size = Vector3(2.5439148, 1, 2.365631)
+
+[node name="Pinball" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53545135, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_t6ii5")
+script = ExtResource("2_48gu3")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074783325, 0, 0.06813049)
+shape = SubResource("BoxShape3D_7dlyx")
+
+[node name="BallCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.86004823, 0.5102127, 0, -0.5102127, 0.86004823, 0, 1.1131375, 1.3623128)

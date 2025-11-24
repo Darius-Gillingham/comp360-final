@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://svt64sieoseb"]
+
+[ext_resource type="PackedScene" uid="uid://bk3aokwpdw0bf" path="res://Player/player_3d.tscn" id="1_5ftco"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mvlbn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jet0j"]
+size = Vector3(10, 10, 10)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rnrx8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hd237"]
+albedo_texture = SubResource("PlaceholderTexture2D_rnrx8")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_mvlbn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_jet0j")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_hd237")
+
+[node name="player3D" parent="." instance=ExtResource("1_5ftco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49350384, 6.0000005, -0.91463685)
