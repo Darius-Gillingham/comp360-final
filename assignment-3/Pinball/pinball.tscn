@@ -1,25 +1,139 @@
-[gd_scene load_steps=5 format=3 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=19 format=3 uid="uid://buxknvxe6gbue"]
 
-[ext_resource type="Texture2D" uid="uid://d1pyrjenx4qx7" path="res://WIPTextures/Orange/texture_10.png" id="1_e78sp"]
+[ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
+[ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
 [ext_resource type="Script" uid="uid://btu0us7icgdi4" path="res://Pinball/pinball.gd" id="2_48gu3"]
+[ext_resource type="Texture2D" uid="uid://ckevivcewvv61" path="res://WIPTextures/Purple/texture_09.png" id="4_b44ii"]
+[ext_resource type="Texture2D" uid="uid://b87e5o5x8flka" path="res://WIPTextures/Red/texture_09.png" id="5_6ltt8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6ii5"]
-albedo_texture = ExtResource("1_e78sp")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
+albedo_texture = ExtResource("1_nnd53")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dlyx"]
 size = Vector3(2.5439148, 1, 2.365631)
 
-[node name="Pinball" type="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53545135, 0)
-use_collision = true
-material = SubResource("StandardMaterial3D_t6ii5")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc0ay"]
+albedo_texture = ExtResource("4_b44ii")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0ksu"]
+albedo_texture = ExtResource("4_b44ii")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go4m7"]
+albedo_texture = ExtResource("4_b44ii")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jliil"]
+albedo_texture = ExtResource("4_b44ii")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4d2f"]
+albedo_texture = ExtResource("4_b44ii")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhbxo"]
+albedo_texture = ExtResource("5_6ltt8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k528o"]
+albedo_texture = ExtResource("5_6ltt8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nnd53"]
+size = Vector3(0.12670898, 0.19335938, 0.055664063)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vm7tp"]
+size = Vector3(1.1705017, 0.040161133, 2.4491882)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nnd53"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vm7tp"]
+radius = 0.05
+
+[node name="Pinball" type="Node3D"]
+script = ExtResource("1_vm7tp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+light_color = Color(1, 1, 0.87058824, 1)
+light_energy = 2.5
+shadow_enabled = true
+directional_shadow_max_distance = 252.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material = SubResource("StandardMaterial3D_vm7tp")
 script = ExtResource("2_48gu3")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="CSGBox3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074783325, 0, 0.06813049)
 shape = SubResource("BoxShape3D_7dlyx")
 
-[node name="BallCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.86004823, 0.5102127, 0, -0.5102127, 0.86004823, 0, 1.1131375, 1.3623128)
+[node name="BallCam" type="Camera3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.81674224, 0.57700264, 0, -0.57700264, 0.81674224, 0, 2.4305356, 1.7815745)
+current = true
+
+[node name="MachineFace" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9341858, -0.3567869, 0, 0.3567869, 0.9341858, 0, 0, -0.32104158)
+
+[node name="BaseBoard" type="CSGBox3D" parent="MachineFace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046142578, 1.0726304, -0.13155961)
+material_override = SubResource("StandardMaterial3D_fc0ay")
+use_collision = true
+size = Vector3(1.2, 0.1, 2.5)
+
+[node name="LeftWall" type="CSGBox3D" parent="MachineFace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.17, -0.132)
+material_override = SubResource("StandardMaterial3D_n0ksu")
+use_collision = true
+size = Vector3(0.1, 0.2, 2.5)
+
+[node name="RightWall" type="CSGBox3D" parent="MachineFace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.596, 1.17, -0.132)
+material_override = SubResource("StandardMaterial3D_go4m7")
+use_collision = true
+size = Vector3(0.1, 0.2, 2.5)
+
+[node name="TopWall" type="CSGBox3D" parent="MachineFace"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.047893226, 1.1804125, -1.3241684)
+material_override = SubResource("StandardMaterial3D_jliil")
+use_collision = true
+size = Vector3(0.1, 0.18574218, 1.005)
+
+[node name="BottomWall" type="CSGBox3D" parent="MachineFace"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.047893226, 1.17, 1.0675093)
+material_override = SubResource("StandardMaterial3D_n4d2f")
+use_collision = true
+size = Vector3(0.1, 0.2, 1.005)
+
+[node name="FailRamp" type="CSGPolygon3D" parent="MachineFace"]
+transform = Transform3D(1, 0, 0, 0, 5.9604645e-08, 1, 0, -1, 5.9604645e-08, -0.46922028, 1.2715335, 1.0532173)
+material_override = SubResource("StandardMaterial3D_fhbxo")
+use_collision = true
+polygon = PackedVector2Array(0.015061408, 0.022909641, 0.013274193, 0.28443667, 0.8661011, 0.10245901, 0.8658593, 0.023540974)
+depth = 0.24
+
+[node name="StartRoller" type="CSGPolygon3D" parent="MachineFace"]
+transform = Transform3D(1, 0, 0, 0, 5.9604645e-08, 1, 0, -1, 5.9604645e-08, -0.46616858, 1.2690985, -0.80851316)
+material_override = SubResource("StandardMaterial3D_k528o")
+use_collision = true
+polygon = PackedVector2Array(0.81746167, 0.47871232, 1.0240531, 0.49643278, 1.0162568, 0.054527998, 0.9579506, 0.35221767)
+depth = 0.17
+
+[node name="FiringHole" type="Area3D" parent="MachineFace"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MachineFace/FiringHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47515768, 1.1458331, 0.99374604)
+shape = SubResource("BoxShape3D_nnd53")
+
+[node name="Screen" type="StaticBody3D" parent="MachineFace"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MachineFace/Screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0622406, 1.2785953, -0.119247735)
+shape = SubResource("BoxShape3D_vm7tp")
+
+[node name="Ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020631611, 1.11529, 0.03343004)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_nnd53")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+shape = SubResource("SphereShape3D_vm7tp")

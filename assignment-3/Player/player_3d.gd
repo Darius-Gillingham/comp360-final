@@ -110,7 +110,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = velocity.y/5.0
 		velocity.y += jump_impulse
 		air_jumps -= 1
-	
 	if is_on_wall():
 		if velocity.y < 0.0:
 			velocity.y = 0.0
