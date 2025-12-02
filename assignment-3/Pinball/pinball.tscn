@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=23 format=3 uid="uid://buxknvxe6gbue"]
 
 [ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
 [ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
 [ext_resource type="Script" uid="uid://btu0us7icgdi4" path="res://Pinball/pinball.gd" id="2_48gu3"]
 [ext_resource type="Texture2D" uid="uid://ckevivcewvv61" path="res://WIPTextures/Purple/texture_09.png" id="4_b44ii"]
 [ext_resource type="Texture2D" uid="uid://b87e5o5x8flka" path="res://WIPTextures/Red/texture_09.png" id="5_6ltt8"]
+[ext_resource type="Script" uid="uid://66qbl2x4iwkj" path="res://Pinball/bumper1_movement.gd" id="6_fc0ay"]
+[ext_resource type="Script" uid="uid://ffy3y40p7knd" path="res://Pinball/bumper2_movement.gd" id="7_n0ksu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
 albedo_texture = ExtResource("1_nnd53")
@@ -43,6 +45,11 @@ size = Vector3(1.1705017, 0.040161133, 2.4491882)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vm7tp"]
 radius = 0.05
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ltt8"]
+size = Vector3(1.3460693, 0.5908203, 1.4537201)
+
+[sub_resource type="PrismMesh" id="PrismMesh_b44ii"]
 
 [node name="Pinball" type="Node3D"]
 script = ExtResource("1_vm7tp")
@@ -137,3 +144,42 @@ mesh = SubResource("SphereMesh_nnd53")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
 shape = SubResource("SphereShape3D_vm7tp")
+
+[node name="Bumper1" type="RigidBody3D" parent="."]
+transform = Transform3D(1.4571588, -0.0045983642, -0.23724376, -0.11744498, 0.9376045, -0.33877343, 0.33599794, 0.34767324, 0.9104658, -0.26931322, 0.8685446, 0.755)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 5.0
+gravity_scale = 0.0
+script = ExtResource("6_fc0ay")
+active_angle = -35.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bumper1"]
+transform = Transform3D(0.14949451, -0.000984415, 0.0028643657, -0.0005774266, -0.16995217, -0.0008350003, 0.012292846, 0.003988477, -0.034873053, -0.004454188, 0.0001257658, 0.003850162)
+shape = SubResource("BoxShape3D_6ltt8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bumper1"]
+transform = Transform3D(-2.1855695e-09, 0.20000003, -4.3711395e-09, 0, -8.742279e-09, -0.10000002, -0.050000004, -8.742279e-09, 1.9106858e-16, -1.4901161e-08, -1.1920929e-07, -2.9802322e-08)
+mesh = SubResource("PrismMesh_b44ii")
+
+[node name="Bumper2" type="RigidBody3D" parent="."]
+transform = Transform3D(-1.4853225, -0.05466221, 0.12840241, -2.0839585e-07, -0.920095, -0.39169487, 0.20933008, -0.387862, 0.9110915, 0.26902464, 0.92330533, 0.6220093)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 5.0
+gravity_scale = 0.0
+script = ExtResource("7_n0ksu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bumper2"]
+transform = Transform3D(0.14857644, 0.008335435, 0.004494049, 0.00735493, -0.16979657, 0.00011071935, 0.019260349, 0.0005375147, -0.034710545, -0.004941888, -0.0024770498, -0.006326735)
+shape = SubResource("BoxShape3D_6ltt8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bumper2"]
+transform = Transform3D(-1.3969839e-09, 0.20000002, -3.958121e-09, -5.5879354e-09, -5.5879354e-09, -0.10000001, -0.05000001, -7.450581e-09, 0, -2.2351742e-08, -0.0075776577, -0.0032258332)
+mesh = SubResource("PrismMesh_b44ii")
