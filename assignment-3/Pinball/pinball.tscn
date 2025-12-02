@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=24 format=3 uid="uid://buxknvxe6gbue"]
 
 [ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
 [ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
@@ -51,6 +51,9 @@ size = Vector3(1.3460693, 0.5908203, 1.4537201)
 
 [sub_resource type="PrismMesh" id="PrismMesh_b44ii"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fc0ay"]
+size = Vector3(0.17712402, 0.124694824, 0.07287598)
+
 [node name="Pinball" type="Node3D"]
 script = ExtResource("1_vm7tp")
 
@@ -97,6 +100,12 @@ material_override = SubResource("StandardMaterial3D_go4m7")
 use_collision = true
 size = Vector3(0.1, 0.2, 2.5)
 
+[node name="RightWall2" type="CSGBox3D" parent="MachineFace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39953247, 1.17, -0.084545225)
+material_override = SubResource("StandardMaterial3D_go4m7")
+use_collision = true
+size = Vector3(0.024609376, 0.2, 1.6436157)
+
 [node name="TopWall" type="CSGBox3D" parent="MachineFace"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.047893226, 1.1804125, -1.3241684)
 material_override = SubResource("StandardMaterial3D_jliil")
@@ -113,7 +122,7 @@ size = Vector3(0.1, 0.2, 1.005)
 transform = Transform3D(1, 0, 0, 0, 5.9604645e-08, 1, 0, -1, 5.9604645e-08, -0.46922028, 1.2715335, 1.0532173)
 material_override = SubResource("StandardMaterial3D_fhbxo")
 use_collision = true
-polygon = PackedVector2Array(0.015061408, 0.022909641, 0.013274193, 0.28443667, 0.8661011, 0.10245901, 0.8658593, 0.023540974)
+polygon = PackedVector2Array(0.015061408, 0.022909641, 0.013274193, 0.28443667, 0.874603, 0.10396874, 0.8767142, 0.022047639)
 depth = 0.24
 
 [node name="StartRoller" type="CSGPolygon3D" parent="MachineFace"]
@@ -136,7 +145,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0622406, 1.2785953, -0.1192
 shape = SubResource("BoxShape3D_vm7tp")
 
 [node name="Ball" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020631611, 1.11529, 0.03343004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47496384, 0.8099166, 0.9720182)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -146,7 +155,7 @@ mesh = SubResource("SphereMesh_nnd53")
 shape = SubResource("SphereShape3D_vm7tp")
 
 [node name="Bumper1" type="RigidBody3D" parent="."]
-transform = Transform3D(1.4571588, -0.0045983642, -0.23724376, -0.11744498, 0.9376045, -0.33877343, 0.33599794, 0.34767324, 0.9104658, -0.26931322, 0.8685446, 0.755)
+transform = Transform3D(1.4571588, -0.0045983642, -0.23724376, -0.11744498, 0.9376045, -0.33877343, 0.33599794, 0.34767324, 0.9104658, -0.29688215, 0.8919387, 0.69154614)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -162,11 +171,18 @@ transform = Transform3D(0.14949451, -0.000984415, 0.0028643657, -0.0005774266, -
 shape = SubResource("BoxShape3D_6ltt8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bumper1"]
-transform = Transform3D(-2.1855695e-09, 0.20000003, -4.3711395e-09, 0, -8.742279e-09, -0.10000002, -0.050000004, -8.742279e-09, 1.9106858e-16, -1.4901161e-08, -1.1920929e-07, -2.9802322e-08)
+transform = Transform3D(-2.1855695e-09, 0.20000003, -4.3711395e-09, 0, -8.742279e-09, -0.10000002, -0.050000004, -8.742278e-09, 1.9106856e-16, -1.4901161e-08, -1.1920929e-07, -2.9802322e-08)
 mesh = SubResource("PrismMesh_b44ii")
 
+[node name="LeftBumpArea" type="Area3D" parent="Bumper1"]
+transform = Transform3D(-1.0605512, -0.04529413, -0.41023767, 0.1060526, -0.9972831, -0.019847061, -0.17690024, -0.028463062, 0.8715023, -0.015150961, 0.025937896, -0.00083884597)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bumper1/LeftBumpArea"]
+transform = Transform3D(0.9942087, -0.024594605, 0.10463959, 0.018140048, 0.99790597, 0.062205926, -0.105950296, -0.059947312, 0.9925655, -0.0025612414, -0.019623399, -0.016449034)
+shape = SubResource("BoxShape3D_fc0ay")
+
 [node name="Bumper2" type="RigidBody3D" parent="."]
-transform = Transform3D(-1.4853225, -0.05466221, 0.12840241, -2.0839585e-07, -0.920095, -0.39169487, 0.20933008, -0.387862, 0.9110915, 0.26902464, 0.92330533, 0.6220093)
+transform = Transform3D(-1.4853225, -0.054662198, 0.12840238, -2.0839585e-07, -0.920095, -0.39169487, 0.20933008, -0.387862, 0.91109145, 0.2297711, 0.92330533, 0.6220093)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -181,5 +197,11 @@ transform = Transform3D(0.14857644, 0.008335435, 0.004494049, 0.00735493, -0.169
 shape = SubResource("BoxShape3D_6ltt8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bumper2"]
-transform = Transform3D(-1.3969839e-09, 0.20000002, -3.958121e-09, -5.5879354e-09, -5.5879354e-09, -0.10000001, -0.05000001, -7.450581e-09, 0, -2.2351742e-08, -0.0075776577, -0.0032258332)
+transform = Transform3D(-2.1855697e-09, 0.20000002, -4.371139e-09, 0, -8.742278e-09, -0.10000001, -0.05000001, -8.742278e-09, 1.9106856e-16, -2.2351742e-08, -0.0075776577, -0.0032258332)
 mesh = SubResource("PrismMesh_b44ii")
+
+[node name="RightBumpArea" type="Area3D" parent="Bumper2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bumper2/RightBumpArea"]
+transform = Transform3D(0.973839, 0.03756995, -0.22412336, -0.036984503, 0.99929315, 0.006807914, 0.22421986, 0.0016613901, 0.9745383, 0.0070079863, -0.02296102, -0.017973095)
+shape = SubResource("BoxShape3D_fc0ay")
