@@ -12,6 +12,7 @@ func _ready():
 	$Bumper1/LeftBumpArea.body_exited.connect(_on_bumper_exited)
 	$Bumper2/RightBumpArea.body_entered.connect(_on_bumper_entered)
 	$Bumper2/RightBumpArea.body_exited.connect(_on_bumper_exited)
+	
 
 
 func _on_body_entered(body):
