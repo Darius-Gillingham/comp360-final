@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=33 format=4 uid="uid://buxknvxe6gbue"]
 
 [ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
 [ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ckevivcewvv61" path="res://WIPTextures/Purple/texture_09.png" id="4_b44ii"]
 [ext_resource type="Texture2D" uid="uid://b87e5o5x8flka" path="res://WIPTextures/Red/texture_09.png" id="5_6ltt8"]
 [ext_resource type="Script" uid="uid://66qbl2x4iwkj" path="res://Pinball/bumper1_movement.gd" id="6_fc0ay"]
+[ext_resource type="Script" uid="uid://22vlynlkpf0a" path="res://Pinball/ball.gd" id="6_n0ksu"]
 [ext_resource type="Script" uid="uid://ffy3y40p7knd" path="res://Pinball/bumper2_movement.gd" id="7_n0ksu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
@@ -49,9 +50,6 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_nnd53"]
 size = Vector3(0.12670898, 0.19335938, 0.055664063)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vm7tp"]
-size = Vector3(1.830368, 0.040161133, 2.927719)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut2x7"]
 albedo_texture = ExtResource("5_6ltt8")
 
@@ -71,6 +69,21 @@ size = Vector3(1.3460693, 0.5908203, 1.4537201)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fc0ay"]
 size = Vector3(0.17712402, 0.124694824, 0.07287598)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3b85"]
+albedo_texture = ExtResource("5_6ltt8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84y6x"]
+
+[sub_resource type="Curve3D" id="Curve3D_n0ksu"]
+_data = {
+"points": PackedVector3Array(0.06275803, -0.261693, 0.3453697, -0.06275803, 0.261693, -0.3453697, -0.96768236, -0.1598136, -0.5614042, -0.36521226, -0.026114315, -0.08248913, 0.36521226, 0.026114315, 0.08248913, -0.33681512, 0.21883488, -1.1100208, -0.0007529259, 0.08773434, -0.08243343, 0.0007529259, -0.08773434, 0.08243343, 0.29905862, -0.14114404, -0.25411373, 0.010193288, 0.12951604, -0.11242089, -0.010193288, -0.12951604, 0.11242089, 0.29638857, -0.30471897, -0.083361916),
+"tilts": PackedFloat32Array(-0.026306145, -0.5519228, 0, -0.3928286)
+}
+point_count = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0ksu"]
+size = Vector3(0.19824219, 0.22338867, 0.32226563)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fc0ay"]
 height = 0.0769043
 radius = 0.10205078
@@ -79,42 +92,30 @@ radius = 0.10205078
 top_radius = 2.0
 bottom_radius = 2.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3b85"]
-albedo_texture = ExtResource("5_6ltt8")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84y6x"]
-
-[sub_resource type="Curve3D" id="Curve3D_fc0ay"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
 [node name="Pinball" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38907808, 0, 0)
 script = ExtResource("1_vm7tp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-visible = false
 light_color = Color(1, 1, 0.87058824, 1)
 light_energy = 2.5
 shadow_enabled = true
 directional_shadow_max_distance = 252.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CameraMount" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23999453, 0, 0)
+visible = false
 material = SubResource("StandardMaterial3D_vm7tp")
 script = ExtResource("2_48gu3")
 
-[node name="Area3D" type="Area3D" parent="CSGBox3D"]
+[node name="Area3D" type="Area3D" parent="CameraMount"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraMount/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017512918, 0, -0.03138733)
 shape = SubResource("BoxShape3D_7dlyx")
 
-[node name="BallCam" type="Camera3D" parent="CSGBox3D"]
+[node name="BallCam" type="Camera3D" parent="CameraMount"]
 transform = Transform3D(1, 0, 0, 0, 0.8167423, 0.5770027, 0, -0.5770027, 0.8167423, -0.05076906, 2.4305356, 1.7815745)
 current = true
 
@@ -122,7 +123,7 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 0.9341858, -0.3567869, 0, 0.3567869, 0.9341858, 0, 0, -0.32104158)
 
 [node name="BaseBoard" type="CSGBox3D" parent="MachineFace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24470448, 1.0680696, -0.32859692)
+transform = Transform3D(0.9999804, -0.003994354, 0.0048229015, 0.0039707557, 0.9999801, 0.004893005, -0.0048423493, -0.004873723, 0.9999764, -0.2407242, 1.0684633, -0.32756594)
 material_override = SubResource("StandardMaterial3D_fc0ay")
 use_collision = true
 size = Vector3(1.7967774, 0.1, 2.9179688)
@@ -189,11 +190,13 @@ polygon = PackedVector2Array(-0.30692607, 0.058693364, -0.43847767, 0.14303744, 
 depth = 0.24
 
 [node name="Rebound2" type="CSGPolygon3D" parent="MachineFace"]
-transform = Transform3D(0.2469585, -0.96876144, 0.022648897, 0.1069763, 0.004025623, -0.9942539, -0.9631037, -0.24796206, -0.10462862, 0.28170234, 1.0709393, -0.10186395)
+transform = Transform3D(0.3735939, -0.92731595, 0.022648893, 0.10549082, 0.01821588, -0.9942539, -0.92157495, -0.37383604, -0.10462862, 0.3014894, 1.071454, -0.10247324)
 material_override = SubResource("StandardMaterial3D_fhbxo")
-use_collision = true
 polygon = PackedVector2Array(-0.30692607, 0.058693364, -0.49094874, 0.19429049, -0.048258543, 0.13866568)
 depth = 0.24
+
+[node name="RightBumpArea" type="Area3D" parent="MachineFace/Rebound2"]
+transform = Transform3D(0.9941434, 0.10806876, 0, -0.10806876, 0.9941434, 0, 0, 0, 1, -0.004616805, -0.042470783, -5.820766e-10)
 
 [node name="FiringHole" type="Area3D" parent="MachineFace"]
 
@@ -202,10 +205,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47515768, 1.1458331, 0.9937
 shape = SubResource("BoxShape3D_nnd53")
 
 [node name="Screen" type="StaticBody3D" parent="MachineFace"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MachineFace/Screen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26769257, 1.2785953, -0.3585131)
-shape = SubResource("BoxShape3D_vm7tp")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="MachineFace"]
 transform = Transform3D(0.5, 0, 0, 0, -0.008918136, 0.49992055, 0, -0.49992055, -0.008918136, -0.10439086, 1.2289549, -0.33448073)
@@ -225,16 +224,19 @@ depth = 0.3
 [node name="CSGPolygon3D4" type="CSGPolygon3D" parent="MachineFace"]
 transform = Transform3D(1, 0, 0, 0, -0.051098526, 0.9986937, 0, -0.9986937, -0.051098526, -1.0786979, 1.260828, -0.7871783)
 material_override = SubResource("StandardMaterial3D_ut2x7")
-polygon = PackedVector2Array(-0.050956547, 0.13067257, -0.06019807, 0.9877875, 1.4090588, 0.97897744, 1.1185554, 0.93750405, 0.891645, 0.8672807, 0.6842492, 0.8569367, 0.5249979, 0.92593193, 0.33134136, 0.9257052, 0.16712272, 0.9518707, 0.056716025, 0.9128268, 0.028775632, 0.80831647, 0.016870081, 0.68717957, 0.056802154, 0.5407345, 0.076330066, 0.47388935, 0.048437655, 0.41406703, 0.024442613, 0.29080868, 0.010641217, 0.0454278)
+use_collision = true
+polygon = PackedVector2Array(-0.06500393, -0.21858925, -0.06019807, 0.9877875, 1.4090588, 0.97897744, 1.1185554, 0.93750405, 0.891645, 0.8672807, 0.6842492, 0.8569367, 0.5249979, 0.92593193, 0.33134136, 0.9257052, 0.16712272, 0.9518707, 0.056716025, 0.9128268, 0.028775632, 0.80831647, 0.016870081, 0.68717957, 0.11796361, 0.5927738, 0.42200574, 0.6161026, 0.17806679, 0.49686694, 0.024442613, 0.29080868, 0.01340735, -0.011187196)
 depth = 0.3
 
 [node name="CSGPolygon3D5" type="CSGPolygon3D" parent="MachineFace"]
-transform = Transform3D(0.24950391, -0.013882687, 0.007421166, -0.007243773, 0.0033851266, 0.24987209, -0.013976063, -0.24959132, 0.0029761642, -0.86463714, 1.2915207, -0.77317405)
+transform = Transform3D(0.24967147, 0.0074572265, 0.010418779, -0.010472733, 0.0016613752, 0.24977505, 0.007381286, -0.2498833, 0.0019715875, -0.86470443, 1.2915372, -0.774384)
 material_override = SubResource("StandardMaterial3D_t2w07")
-polygon = PackedVector2Array(0.0302217, 0.94221663, 0.14434719, 1.1695052, 0.24960399, 1.1759859, 0.18926668, 0.5068389, 1.0205841, 0.35408795, 0.270612, 0.306126, -0.03481126, 0.27177012, -0.043975115, 0.70790315)
+use_collision = true
+polygon = PackedVector2Array(-0.12695038, 0.5394087, 0.14434719, 1.1695052, 0.24960399, 1.1759859, 0.18926668, 0.5068389, 1.0205841, 0.35408795, 1.4621952, -0.35280037, 0.6514821, -0.5202236, -0.13853121, -0.023312569)
 
 [node name="Ball" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47496384, 0.8099166, 0.9720182)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47905537, 0.7972766, 0.9075252)
+script = ExtResource("6_n0ksu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -295,54 +297,6 @@ mesh = SubResource("PrismMesh_b44ii")
 transform = Transform3D(0.973839, 0.03756995, -0.22412336, -0.036984503, 0.99929315, 0.006807914, 0.22421986, 0.0016613901, 0.9745383, 0.0070079863, -0.02296102, -0.017973095)
 shape = SubResource("BoxShape3D_fc0ay")
 
-[node name="Attack Bumper" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9398358, -0.3416265, 0, 0.3416265, 0.9398358, -0.30605495, 1.4077826, -0.73626053)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack Bumper"]
-shape = SubResource("CylinderShape3D_fc0ay")
-
-[node name="Area3D" type="Area3D" parent="Attack Bumper"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Attack Bumper"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
-mesh = SubResource("CylinderMesh_n0ksu")
-
-[node name="Attack Bumper2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9398358, -0.3416265, 0, 0.3416265, 0.9398358, -0.52093816, 1.5446335, -0.9798356)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack Bumper2"]
-transform = Transform3D(1, 0, 0, 0, 1.000002, -2.682209e-07, 0, 2.682209e-07, 1.000002, 0, 0.013549805, 1.1920929e-07)
-shape = SubResource("CylinderShape3D_fc0ay")
-
-[node name="Area3D" type="Area3D" parent="Attack Bumper2"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Attack Bumper2"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
-mesh = SubResource("CylinderMesh_n0ksu")
-
-[node name="Attack Bumper3" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9398358, -0.3416265, 0, 0.3416265, 0.9398358, -0.089588046, 1.5446335, -0.9798356)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack Bumper3"]
-shape = SubResource("CylinderShape3D_fc0ay")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Attack Bumper3"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
-mesh = SubResource("CylinderMesh_n0ksu")
-
-[node name="Attack Bumper4" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9398358, -0.3416265, 0, 0.3416265, 0.9398358, -0.9035865, 1.6825558, -1.3907555)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack Bumper4"]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0.024201065, 0.017759204, 0.048856735)
-shape = SubResource("CylinderShape3D_fc0ay")
-
-[node name="Area3D" type="Area3D" parent="Attack Bumper4"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Attack Bumper4"]
-transform = Transform3D(0.05, 0, 0, 0, 0.050000016, -3.7252903e-09, 0, 3.7252903e-09, 0.050000016, 0.027046174, 0.034290552, 0.05088842)
-mesh = SubResource("CylinderMesh_n0ksu")
-
 [node name="CSGBox3D2" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.24288708, 0.97005457, 0, -0.97005457, 0.24288708, -1.1910789, 0.86063087, 0.8469384)
 material_override = SubResource("StandardMaterial3D_k3b85")
@@ -359,22 +313,18 @@ polygon = PackedVector2Array(0.26448333, 0.11812508, 0.24057156, 0.49869654, 0.5
 depth = 0.25
 material = SubResource("StandardMaterial3D_84y6x")
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0883095, 1.1441839, -0.37523985)
-curve = SubResource("Curve3D_fc0ay")
-
 [node name="Elevated Platform" type="CSGPolygon3D" parent="."]
 transform = Transform3D(0.22578973, -0.021082059, -0.973948, -0.28223547, 0.9554725, -0.08611255, 0.9323959, 0.29432598, 0.20978566, -0.70365703, 1.376582, -0.56067145)
 polygon = PackedVector2Array(0.08441329, -0.11885071, 0.61178017, -0.17328048, 0.077560425, 0.11699462)
 depth = 0.2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Elevated Platform"]
-transform = Transform3D(0.9747705, 0.22295383, -0.010674983, -0.2232069, 0.97342706, -0.051170588, -0.0010174066, 0.052262425, 0.99863285, -0.04546237, 0.0813992, 0.07166035)
-size = Vector3(0.20947266, 0.080089845, 0.49253845)
+transform = Transform3D(0.9747705, 0.22295383, -0.010674983, -0.2232069, 0.97342706, -0.051170588, -0.0010174066, 0.052262425, 0.99863285, -0.03948784, 0.10748482, 0.07306082)
+size = Vector3(0.20947266, 0.026495118, 0.49253845)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Elevated Platform"]
-transform = Transform3D(0.112970375, -0.099090755, 0.98864543, -0.040502045, 0.99372643, 0.10422933, -0.992774, -0.051816814, 0.10824841, 0.16038942, 0.10801411, 0.29071957)
-size = Vector3(0.2512207, 0.080089845, 0.8798485)
+transform = Transform3D(0.112970375, -0.09909071, 0.98864543, -0.040502045, 0.99372524, 0.104229584, -0.992774, -0.051816817, 0.10824801, 0.15744364, 0.137555, 0.28917915)
+size = Vector3(0.2512207, 0.020635743, 0.8798485)
 
 [node name="Crane" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31392574, 1.9485056, -1.6081654)
@@ -382,9 +332,108 @@ radius = 0.107421875
 height = 0.7086792
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(0.9231641, 0.016066432, -0.38407022, -0.15422536, 0.9306683, -0.33176947, 0.3521116, 0.36551112, 0.8616374, 0.28096813, 1.1699506, -0.12099236)
+transform = Transform3D(0.9884346, 0.016066432, -0.15079464, -0.069914736, 0.9306683, -0.35912168, 0.13456994, 0.36551112, 0.92102796, 0.28009552, 1.1075163, 0.038017035)
 size = Vector3(0.18276978, 0.111083984, 0.10650635)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(0.83730364, 0.039270718, 0.545326, 0.16207948, 0.93475336, -0.31617463, -0.52216166, 0.3531204, 0.77630746, -0.5855026, 1.6688939, -1.3569691)
 size = Vector3(0.19900513, 0.10864258, 0.10015869)
+
+[node name="wireframe" type="Node3D" parent="."]
+
+[node name="BasePath" type="Path3D" parent="wireframe"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02985549, 1.4349842, 0)
+curve = SubResource("Curve3D_n0ksu")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="wireframe/BasePath"]
+transform = Transform3D(0.9863585, 0.08094225, 0.14333607, 0.021087859, 0.8014471, -0.597694, -0.16325496, 0.59256315, 0.7888071, -0.96768236, -0.1598136, -0.5614042)
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="wireframe"]
+transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37130567, 0.019481212, -0.021386623)
+polygon = PackedVector2Array(-0.010567367, 0.028729245, -0.001369427, 0.03467475, 0.008875638, 0.027120542, 0.008430226, 0.015234577, -0.0012551174, 0.011887036, -0.0089035835, 0.019471183)
+mode = 2
+path_node = NodePath("../BasePath")
+path_interval_type = 0
+path_interval = 0.01
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="wireframe"]
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, -0.39151117, -0.013111681, -0.07980883)
+polygon = PackedVector2Array(-0.010567367, 0.028729245, -0.001369427, 0.03467475, 0.008875638, 0.027120542, 0.008430226, 0.015234577, -0.0012551174, 0.011887036, -0.0089035835, 0.019471183)
+mode = 2
+path_node = NodePath("../BasePath")
+path_interval_type = 0
+path_interval = 0.01
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="launcher" type="Area3D" parent="wireframe"]
+transform = Transform3D(0.99951035, -1.8626451e-09, 0.03128863, 0.008098097, 0.9659258, -0.2586923, -0.030222505, 0.25881907, 0.9654529, 0.019960504, 0.1981951, -0.47800487)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wireframe/launcher"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.96065176, 1.0940576, -0.09688197)
+shape = SubResource("BoxShape3D_n0ksu")
+
+[node name="exitChecker" type="Area3D" parent="wireframe"]
+transform = Transform3D(0.7469284, 0, -0.6649045, -0.17208995, 0.9659259, -0.19331928, 0.6422485, 0.25881904, 0.7214774, 0, 1.5044246, 0)
+
+[node name="Bouncers" type="Node3D" parent="."]
+
+[node name="Attack Bumper" type="RigidBody3D" parent="Bouncers"]
+transform = Transform3D(1, 0, 0, 0, 0.9398358, -0.3416265, 0, 0.3416265, 0.9398358, -0.30605495, 1.4077826, -0.73626053)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bouncers/Attack Bumper"]
+shape = SubResource("CylinderShape3D_fc0ay")
+
+[node name="Area3D" type="Area3D" parent="Bouncers/Attack Bumper"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bouncers/Attack Bumper"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n0ksu")
+
+[node name="Attack Bumper2" type="RigidBody3D" parent="Bouncers"]
+transform = Transform3D(1, 0, 0, 0, 0.9398358, -0.3416265, 0, 0.3416265, 0.9398358, -0.52093816, 1.5446335, -0.9798356)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bouncers/Attack Bumper2"]
+transform = Transform3D(1, 0, 0, 0, 1.000002, -2.682209e-07, 0, 2.682209e-07, 1.000002, 0, 0.013549805, 1.1920929e-07)
+shape = SubResource("CylinderShape3D_fc0ay")
+
+[node name="Area3D" type="Area3D" parent="Bouncers/Attack Bumper2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bouncers/Attack Bumper2"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n0ksu")
+
+[node name="Attack Bumper3" type="RigidBody3D" parent="Bouncers"]
+transform = Transform3D(1, 0, 0, 0, 0.9398358, -0.3416265, 0, 0.3416265, 0.9398358, -0.089588046, 1.5446335, -0.9798356)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bouncers/Attack Bumper3"]
+shape = SubResource("CylinderShape3D_fc0ay")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bouncers/Attack Bumper3"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n0ksu")
+
+[node name="Attack Bumper4" type="RigidBody3D" parent="Bouncers"]
+transform = Transform3D(1, 0, 0, 0, 0.9398358, -0.3416265, 0, 0.3416265, 0.9398358, -0.9035865, 1.6825558, -1.3907555)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bouncers/Attack Bumper4"]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0.024201065, 0.017759204, 0.048856735)
+shape = SubResource("CylinderShape3D_fc0ay")
+
+[node name="Area3D" type="Area3D" parent="Bouncers/Attack Bumper4"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bouncers/Attack Bumper4"]
+transform = Transform3D(0.05, 0, 0, 0, 0.050000016, -3.7252903e-09, 0, 3.7252903e-09, 0.050000016, 0.027046174, 0.034290552, 0.05088842)
+mesh = SubResource("CylinderMesh_n0ksu")

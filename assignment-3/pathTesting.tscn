@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmcevv42fmgtm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xgpf4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_irorr"]
+radius = 0.05
+
+[sub_resource type="Curve3D" id="Curve3D_nqs51"]
+_data = {
+"points": PackedVector3Array(-0.30520332, 0, -0.4567144, 0.30520332, 0, 0.4567144, -0.03087163, 0, 1.594106, -0.067653656, 0, -0.36363864, 0.067653656, 0, 0.36363864, 0.63720703, -0.09118089, 2.4861372, -0.18478644, 0, -0.2692833, 0.18478644, 0, 0.2692833, 0.7302246, -0.18338023, 3.5276482, -0.15222073, 0, -0.60042644, 0.15222073, 0, 0.60042644, 1.3463135, -0.22777249, 4.323294, 0, 0, 0, 0, 0, 0, 1.9822998, -0.39692664, 5.3980308),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0.4397174, 2.5758605, 2.1869547)
+light_color = Color(1, 1, 0.87058824, 1)
+light_energy = 2.5
+shadow_enabled = true
+directional_shadow_max_distance = 252.0
+
+[node name="Ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05246809, 0.1263369, 1.6290505)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_xgpf4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+shape = SubResource("SphereShape3D_irorr")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_nqs51")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6244932, 0.78103024, 0, -0.78103024, 0.6244932, 0, 1.471577, 5.650687)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018475801, -0.022706315, 0.0014941692)
+use_collision = true
+polygon = PackedVector2Array(-0.010567367, 0.028729245, -0.001369427, 0.03467475, 0.008875638, 0.027120542, 0.008430226, 0.015234577, -0.0012551174, 0.011887036, -0.0089035835, 0.019471183)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061390772, -0.022706315, 0.0014941692)
+use_collision = true
+polygon = PackedVector2Array(-0.010567367, 0.028729245, -0.001369427, 0.03467475, 0.008875638, 0.027120542, 0.008430226, 0.015234577, -0.0012551174, 0.011887036, -0.0089035835, 0.019471183)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12107761, 0.03432025, 0.0014941692)
+use_collision = true
+polygon = PackedVector2Array(-0.010567367, 0.028729245, -0.001369427, 0.03467475, 0.008875638, 0.027120542, 0.008430226, 0.015234577, -0.0012551174, 0.011887036, -0.0089035835, 0.019471183)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06611346, 0.022637501, 0.0014941692)
+use_collision = true
+polygon = PackedVector2Array(-0.010567367, 0.028729245, -0.001369427, 0.03467475, 0.008875638, 0.027120542, 0.008430226, 0.015234577, -0.0012551174, 0.011887036, -0.0089035835, 0.019471183)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016500264, -0.0021674633, -0.0029612184)
+visible = false
+polygon = PackedVector2Array(-0.10467398, 0.08811182, -0.075, 0, 0.075, 0, 0.12593943, 0.08904469, 0.1010192, 0.08904469, 0.058080494, 0.016105294, -0.056834042, 0.014625728, -0.08346659, 0.088605046)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false

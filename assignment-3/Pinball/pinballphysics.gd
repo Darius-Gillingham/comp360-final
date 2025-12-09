@@ -1,6 +1,7 @@
 extends Node3D
 var fire_in_the_hole = false
 var can_bump = false
+var launching = false
 
 @onready var _ball: RigidBody3D = $Ball
 @onready var _bumper1: Area3D = $Bumper1/LeftBumpArea
@@ -12,6 +13,9 @@ func _ready():
 	$Bumper1/LeftBumpArea.body_exited.connect(_on_bumper_exited)
 	$Bumper2/RightBumpArea.body_entered.connect(_on_bumper_entered)
 	$Bumper2/RightBumpArea.body_exited.connect(_on_bumper_exited)
+	$wireframe/launcher.body_entered.connect(_on_track_trigger_body_entered)
+	$wireframe/launcher.body_entered.connect(_on_track_trigger_body_entered)
+
 	
 
 
@@ -32,8 +36,20 @@ func _on_bumper_entered(body):
 func _on_bumper_exited(body):
 	if body.name == "Ball":
 		can_bump = false
-		
 
+func _on_launcher_entered(body):
+	if body.name == "Ball":
+		launching = true
+		
+func _on_track_trigger_body_entered(body):
+	if body.name == "Ball":
+		body.enter_track($wireframe/BasePath/PathFollow3D)
+
+func _on_path_exit(body):
+	if body.name =="Ball":
+		var direction : Vector3 = transform.basis.z.normalized()
+		print("AGGGGGGGGGGGG")
+		_ball.apply_impulse(direction * 2)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -47,10 +63,17 @@ func _physics_process(delta: float) -> void:
 		var strength := 10
 		_ball.apply_impulse(direction * strength)
 
+
 	if (Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right")) and can_bump:
 		print("BUMPIN")
 		var direction := -transform.basis.z.normalized()
 		var strength := 5
 		_ball.apply_impulse(direction * strength)
 		pass
+	
+	if launching == true:
+		launching = false
+		print("launch time")
+		var direction : Vector3 = -transform.basis.z.normalized()
+		_ball.apply_impulse(direction * 12)
 		
