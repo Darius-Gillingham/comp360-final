@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var G: float = 20.0               
+@export var G: float = 10.0               
 @export var min_radius: float = 0.6       
 @export var max_force: float = 120.0      
 @export var vertical_lock: bool = true   
@@ -14,12 +14,12 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if body is RigidBody3D:
+	if body is RigidBody3D and body.name == "Ball":
 		bodies.append(body)
 
 
 func _on_body_exited(body: Node) -> void:
-	if body is RigidBody3D:
+	if body is RigidBody3D and body.name == "Ball":
 		bodies.erase(body)
 
 
@@ -46,6 +46,5 @@ func _physics_process(delta: float) -> void:
 		var force: Vector3 = direction * force_strength
 		body.apply_central_force(force)
 
-
-		#if force.length() > 0.01:
-			#print("Gravity well applying force:", force, "to:", body.name)
+		if force.length() > 0.01:
+			print("Gravity well applying force:", force, "to:", body.name)
