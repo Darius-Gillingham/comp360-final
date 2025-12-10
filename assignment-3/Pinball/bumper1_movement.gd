@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var rest_angle: float = 0.0          # degrees
+@export var rest_angle: float = -20.0          # degrees
 @export var active_angle: float = 35.0       # degrees (how far it rotates)
 @export var torque_strength: float = 100.0    # power of rotation torque
 @export var return_strength: float = 80.0    # how strongly it comes back

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://6nnem8lslq7p"]
+
+[ext_resource type="Script" uid="uid://cpdgg41487hov" path="res://attack_bumper.gd" id="1_0ctjr"]
+[ext_resource type="PackedScene" uid="uid://bybu65qcpkxe8" path="res://meshes/roundBumper.glb" id="1_s6vjs"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_whtcl"]
+height = 0.10568237
+radius = 0.10546875
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_et6t4"]
+height = 0.0769043
+radius = 0.09472656
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_0ctjr")
+
+[node name="Attack_Bumper" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+freeze = true
+freeze_mode = 1
+
+[node name="Area3D" type="Area3D" parent="Attack_Bumper"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack_Bumper/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1.000002, -2.682209e-07, 0, 2.682209e-07, 1.000002, 0, 0.015787842, 2.3660493e-07)
+shape = SubResource("CylinderShape3D_whtcl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack_Bumper"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1.0000015, -2.0861626e-07, 0, 2.0861626e-07, 1.0000015, 0, 0, 0)
+shape = SubResource("CylinderShape3D_et6t4")
+
+[node name="roundBumper" parent="Attack_Bumper" instance=ExtResource("1_s6vjs")]
+transform = Transform3D(0.06, 0, 0, 0, 0.060000006, 0, 0, 0, 0.060000006, 0.009519219, -0.03920564, 0.07315083)
