@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://3lddnhawqieq"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_lquwl"]
+density = 0.03
+albedo = Color(0.52435243, 0.32942972, 1.92523e-07, 1)
+emission = Color(0.2965935, 0.21288988, 0.097713836, 1)
+
+[node name="FogVolume2" type="FogVolume"]
+size = Vector3(175.97815, 7.8496094, 178.71033)
+material = SubResource("FogMaterial_lquwl")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpwsljxgup6of"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_1bvp3"]
+density = 0.05
+albedo = Color(0.8276949, 0.44094518, 1.92523e-07, 1)
+emission = Color(0.4885229, 0.23326051, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1bvp3"]
+height = 23.25
+radius = 11.0
+
+[node name="Spotlight" type="Node3D"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -31, 71.3292, 110)
+light_energy = 40.0
+light_indirect_energy = 5.454
+light_volumetric_fog_energy = 80.0
+spot_range = 59.777878
+spot_attenuation = 0.8
+spot_angle = 14.6718445
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.53288, 48.81516, 109.478935)
+size = Vector3(26.33496, 71.73584, 24.436523)
+shape = 2
+material = SubResource("FogMaterial_1bvp3")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.1922, 25.330318, 109.79645)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.625, 0)
+shape = SubResource("CylinderShape3D_1bvp3")
