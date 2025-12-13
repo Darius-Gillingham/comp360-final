@@ -3,7 +3,7 @@
 
 extends Area3D
 
-@export var boost_force: float = 6.0        # Strength of the boost
+@export var boost_force: float = 0.0        # Strength of the boost
 @export var max_speed: float = 40.0          # Hard speed cap
 @export var use_area_forward: bool = true    # Boost along Area3D -Z
 @export var vertical_lock: bool = true        # Prevent vertical impulse
