@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=59 format=4 uid="uid://buxknvxe6gbue"]
 
 [ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
 [ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
@@ -17,6 +17,7 @@
 [ext_resource type="Shader" uid="uid://dvndpqdvetyh7" path="res://Pinball/glass.gdshader" id="15_84y6x"]
 [ext_resource type="Script" uid="uid://dw42wv34srlcv" path="res://Pinball/booster.gd" id="16_t2w07"]
 [ext_resource type="Shader" uid="uid://cut3gkdljjxq8" path="res://booster.gdshader" id="17_3fung"]
+[ext_resource type="AudioStream" uid="uid://c1ny4xu634h8w" path="res://audio/pinball_music.ogg" id="18_3fung"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
 albedo_texture = ExtResource("1_nnd53")
@@ -559,3 +560,8 @@ shape = SubResource("BoxShape3D_p1rvr")
 transform = Transform3D(0.1, 0, 0, 0, 0.14660048, 0.009304176, 0, -0.37216705, 0.003665012, 0.4833488, 1.1090944, -0.06931496)
 mesh = SubResource("BoxMesh_vqg52")
 surface_material_override/0 = SubResource("ShaderMaterial_u4s1q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_3fung")
+volume_db = -1.0
+autoplay = true
