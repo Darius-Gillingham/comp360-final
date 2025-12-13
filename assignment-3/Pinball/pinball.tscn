@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=53 format=4 uid="uid://buxknvxe6gbue"]
 
 [ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
 [ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
@@ -6,12 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://ckevivcewvv61" path="res://WIPTextures/Purple/texture_09.png" id="4_b44ii"]
 [ext_resource type="Texture2D" uid="uid://b87e5o5x8flka" path="res://WIPTextures/Red/texture_09.png" id="5_6ltt8"]
 [ext_resource type="Script" uid="uid://66qbl2x4iwkj" path="res://Pinball/bumper1_movement.gd" id="6_fc0ay"]
-[ext_resource type="Script" uid="uid://22vlynlkpf0a" path="res://Pinball/ball.gd" id="6_n0ksu"]
+[ext_resource type="Script" path="res://Pinball/ball.gd" id="6_n0ksu"]
 [ext_resource type="Script" uid="uid://ffy3y40p7knd" path="res://Pinball/bumper2_movement.gd" id="7_n0ksu"]
 [ext_resource type="PackedScene" uid="uid://dh43ar7y3a54l" path="res://meshes/flapper.glb" id="8_go4m7"]
 [ext_resource type="Material" uid="uid://dy43u7r6aprtp" path="res://Pinball/metal.tres" id="10_fhbxo"]
 [ext_resource type="PackedScene" uid="uid://6nnem8lslq7p" path="res://attack_bumper.tscn" id="10_jliil"]
 [ext_resource type="PackedScene" uid="uid://cq10hpdy7wvf8" path="res://triangle_bumper.tscn" id="11_n4d2f"]
+[ext_resource type="Script" uid="uid://bd28dxqv2s3dn" path="res://gravity_well.gd" id="13_k3b85"]
+[ext_resource type="Shader" uid="uid://mh275qf1i8qs" path="res://gravity_well.gdshader" id="14_84y6x"]
+[ext_resource type="Shader" uid="uid://dvndpqdvetyh7" path="res://Pinball/glass.gdshader" id="15_84y6x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
 albedo_texture = ExtResource("1_nnd53")
@@ -90,6 +93,82 @@ point_count = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n0ksu"]
 size = Vector3(0.19824219, 0.22338867, 0.1484375)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ut2x7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t2w07"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fung"]
+render_priority = 0
+shader = ExtResource("14_84y6x")
+shader_parameter/albedo_color = Color(0.92, 0.94, 1, 1)
+shader_parameter/roughness = 0.08
+shader_parameter/metallic = 1.0
+shader_parameter/clearcoat = 0.6
+shader_parameter/clearcoat_roughness = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_ut2x7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2w07"]
+render_priority = 0
+shader = ExtResource("15_84y6x")
+shader_parameter/opacity = 0.12
+shader_parameter/roughness = 0.04
+shader_parameter/metallic = 1.0
+shader_parameter/specular = 0.9
+shader_parameter/fresnel_power = 5.0
+shader_parameter/fresnel_boost = 1.0
+shader_parameter/tint = Color(0.85, 0.95, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3fung"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="PrismMesh" id="PrismMesh_p1rvr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vqg52"]
+render_priority = 0
+shader = ExtResource("15_84y6x")
+shader_parameter/opacity = 0.12
+shader_parameter/roughness = 0.04
+shader_parameter/metallic = 1.0
+shader_parameter/specular = 0.9
+shader_parameter/fresnel_power = 5.0
+shader_parameter/fresnel_boost = 1.0
+shader_parameter/tint = Color(0.85, 0.95, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u4s1q"]
+data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lspoc"]
+render_priority = 0
+shader = ExtResource("15_84y6x")
+shader_parameter/opacity = 0.12
+shader_parameter/roughness = 0.04
+shader_parameter/metallic = 1.0
+shader_parameter/specular = 0.9
+shader_parameter/fresnel_power = 5.0
+shader_parameter/fresnel_boost = 1.0
+shader_parameter/tint = Color(0.85, 0.95, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ylh6"]
+data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8u3cw"]
+size = Vector3(1.8, 0.6, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knuv2"]
+render_priority = 0
+shader = ExtResource("15_84y6x")
+shader_parameter/opacity = 0.12
+shader_parameter/roughness = 0.04
+shader_parameter/metallic = 1.0
+shader_parameter/specular = 0.9
+shader_parameter/fresnel_power = 5.0
+shader_parameter/fresnel_boost = 1.0
+shader_parameter/tint = Color(0.85, 0.95, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iil8w"]
+data = PackedVector3Array(-0.9, 0.29999998, 0.005, 0.9, 0.29999998, 0.005, -0.9, -0.29999998, 0.005, 0.9, 0.29999998, 0.005, 0.9, -0.29999998, 0.005, -0.9, -0.29999998, 0.005, 0.9, 0.29999998, -0.005, -0.9, 0.29999998, -0.005, 0.9, -0.29999998, -0.005, -0.9, 0.29999998, -0.005, -0.9, -0.29999998, -0.005, 0.9, -0.29999998, -0.005, 0.9, 0.29999998, 0.005, 0.9, 0.29999998, -0.005, 0.9, -0.29999998, 0.005, 0.9, 0.29999998, -0.005, 0.9, -0.29999998, -0.005, 0.9, -0.29999998, 0.005, -0.9, 0.29999998, -0.005, -0.9, 0.29999998, 0.005, -0.9, -0.29999998, -0.005, -0.9, 0.29999998, 0.005, -0.9, -0.29999998, 0.005, -0.9, -0.29999998, -0.005, 0.9, 0.29999998, 0.005, -0.9, 0.29999998, 0.005, 0.9, 0.29999998, -0.005, -0.9, 0.29999998, 0.005, -0.9, 0.29999998, -0.005, 0.9, 0.29999998, -0.005, -0.9, -0.29999998, 0.005, 0.9, -0.29999998, 0.005, -0.9, -0.29999998, -0.005, 0.9, -0.29999998, 0.005, 0.9, -0.29999998, -0.005, -0.9, -0.29999998, -0.005)
 
 [node name="Pinball" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38907808, 0, 0)
@@ -398,3 +477,57 @@ transform = Transform3D(0.9810195, 0, 0.19390906, 0.05018736, 0.9659259, -0.2539
 
 [node name="TriangleBumper2" parent="Bouncers" instance=ExtResource("11_n4d2f")]
 transform = Transform3D(-0.89806604, -1.8626451e-08, 0.4398607, 0.11384433, 0.96592593, 0.23243652, -0.42487288, 0.25881904, -0.8674652, 0.07141231, 0.8893923, 0.14366488)
+
+[node name="Gravity Well" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1734314, 1.50527, 0.6524811)
+script = ExtResource("13_k3b85")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gravity Well"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.93388367, -0.3451004, -1.280838)
+shape = SubResource("SphereShape3D_ut2x7")
+debug_color = Color(0.34335616, 0.64838064, 0.7111029, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gravity Well"]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.2, 0, 0, 0, 0.20000002, 0.952858, -0.24871635, -1.0382309)
+mesh = SubResource("SphereMesh_t2w07")
+surface_material_override/0 = SubResource("ShaderMaterial_3fung")
+
+[node name="glass1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.4431499, 0.0087669315, 0, -2.6300795, 0.0048105, -0.34797317, 1.490415, -0.22719169)
+mesh = SubResource("BoxMesh_ut2x7")
+surface_material_override/0 = SubResource("ShaderMaterial_t2w07")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="glass1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="glass1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3fung")
+
+[node name="glass2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.029384373, -0.043229327, 0.009977617, 0.40530476, -1.2938368, 0.0005271633, 0.1932993, 2.7063107, 0.0004114047, 0.55833, 1.4299264, -0.19543248)
+mesh = SubResource("PrismMesh_p1rvr")
+surface_material_override/0 = SubResource("ShaderMaterial_vqg52")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="glass2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="glass2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_u4s1q")
+
+[node name="glass3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.026119445, -0.043229327, 0.009977617, 0.36027092, -1.2938368, 0.0005271633, 0.1718216, 2.7063107, 0.0004114047, -1.1794792, 1.3978446, -0.19543248)
+mesh = SubResource("PrismMesh_p1rvr")
+surface_material_override/0 = SubResource("ShaderMaterial_lspoc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="glass3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="glass3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1ylh6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9145789, -0.40440744, 0, 0.40440744, 0.9145789, -0.29049563, 1.9313862, -1.5716667)
+mesh = SubResource("BoxMesh_8u3cw")
+surface_material_override/0 = SubResource("ShaderMaterial_knuv2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_iil8w")

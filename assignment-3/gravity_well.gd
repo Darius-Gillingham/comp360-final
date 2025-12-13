@@ -45,6 +45,3 @@ func _physics_process(delta: float) -> void:
 
 		var force: Vector3 = direction * force_strength
 		body.apply_central_force(force)
-
-		if force.length() > 0.01:
-			print("Gravity well applying force:", force, "to:", body.name)
