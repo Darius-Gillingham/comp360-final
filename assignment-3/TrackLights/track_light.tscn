@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://coesoaga6pur8"]
+
+[ext_resource type="PackedScene" uid="uid://b2wq0xhl5stkp" path="res://TrackLights/CircleTrackLight.glb" id="1_03l1p"]
+[ext_resource type="Script" uid="uid://cta15qqe5yyff" path="res://TrackLights/track_light.gd" id="1_eqrfk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qlmf"]
+albedo_color = Color(0.18538326, 0.18538326, 0.18538326, 1)
+
+[node name="TrackLight" instance=ExtResource("1_03l1p")]
+script = ExtResource("1_eqrfk")
+
+[node name="Circle" parent="." index="0"]
+transform = Transform3D(0.348966, 0, 0, 0, 0.348966, 0, 0, 0, 0.348966, -0.006213665, -0.020135522, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_8qlmf")
+
+[node name="Circle_001" parent="." index="1"]
+transform = Transform3D(0.348966, 0, 0, 0, 0.348966, 0, 0, 0, 0.348966, -0.006213665, 0.04819037, 0)

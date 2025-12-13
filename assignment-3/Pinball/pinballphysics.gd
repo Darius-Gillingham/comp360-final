@@ -8,6 +8,7 @@ var start_global_position: Vector3
 @onready var _bumper1: Area3D = $Bumper1/LeftBumpArea
 @onready var _camera: CSGBox3D = $CameraMount
 
+@onready var _light_manager: LightManager = $LightManager
 
 func _ready():
 	$MachineFace/FiringHole.body_entered.connect(_on_body_entered)
@@ -20,6 +21,8 @@ func _ready():
 	$wireframe/launcher.body_entered.connect(_on_track_trigger_body_entered)
 
 	start_global_position = to_global(start_local_position)
+	$MachineFace/Fail.body_entered.connect(_on_fail_entered)
+	$MachineFace/Fail.body_exited.connect(_on_fail_exited)
 
 
 func _on_body_entered(body):
@@ -53,6 +56,13 @@ func _on_path_exit(body):
 		var direction : Vector3 = transform.basis.z.normalized()
 		print("AGGGGGGGGGGGG")
 		_ball.apply_impulse(direction * 2)
+		
+func _on_fail_entered(_body):
+	_light_manager.light_state = LightsData.LightState.FAIL
+	
+func _on_fail_exited(_body):
+	_light_manager.light_state = LightsData.LightState.IDLE
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):

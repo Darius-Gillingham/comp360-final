@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ax6edcib114"]
+
+[ext_resource type="Script" uid="uid://bg22e2gitmokl" path="res://TrackLights/light_manager.gd" id="1_0xd76"]
+
+[node name="LightManager" type="Node3D"]
+script = ExtResource("1_0xd76")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true

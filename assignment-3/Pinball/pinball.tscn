@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=69 format=4 uid="uid://buxknvxe6gbue"]
 
 [ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
 [ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
@@ -18,6 +18,13 @@
 [ext_resource type="Script" uid="uid://dw42wv34srlcv" path="res://Pinball/booster.gd" id="16_t2w07"]
 [ext_resource type="Shader" uid="uid://cut3gkdljjxq8" path="res://booster.gdshader" id="17_3fung"]
 [ext_resource type="AudioStream" uid="uid://c1ny4xu634h8w" path="res://audio/pinball_music.ogg" id="18_3fung"]
+[ext_resource type="PackedScene" uid="uid://c3ax6edcib114" path="res://TrackLights/light_manager.tscn" id="19_k3b85"]
+[ext_resource type="PackedScene" uid="uid://coesoaga6pur8" path="res://TrackLights/track_light.tscn" id="20_84y6x"]
+[ext_resource type="Material" uid="uid://u1fjs1uau1w0" path="res://TrackLights/Materials/purple_light.tres" id="15_3fung"]
+[ext_resource type="Material" uid="uid://cdlgulf7jy2xu" path="res://TrackLights/Materials/purple_dark.tres" id="16_p1rvr"]
+[ext_resource type="Material" uid="uid://jemwncpgmegw" path="res://TrackLights/Materials/yellow_light.tres" id="17_vqg52"]
+[ext_resource type="Material" uid="uid://conh13hstx8yd" path="res://TrackLights/Materials/yellow_dark.tres" id="18_u4s1q"]
+[ext_resource type="PackedScene" uid="uid://cq5umqcro8yes" path="res://TrackLights/triangle_track_light.tscn" id="19_p1rvr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
 albedo_texture = ExtResource("1_nnd53")
@@ -65,6 +72,8 @@ albedo_texture = ExtResource("5_6ltt8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4s1q"]
 albedo_texture = ExtResource("5_6ltt8")
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1rvr"]
+size = Vector3(1.6767578, 0.10032654, 0.34057617)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut2x7"]
 albedo_texture = ExtResource("5_6ltt8")
@@ -289,6 +298,12 @@ mesh = SubResource("ArrayMesh_fc0ay")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MachineFace/FiringHole"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47515768, 1.1458331, 0.99374604)
 shape = SubResource("BoxShape3D_nnd53")
+
+[node name="Fail" type="Area3D" parent="MachineFace"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MachineFace/Fail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26123047, 1.176236, 0.9038305)
+shape = SubResource("BoxShape3D_p1rvr")
 
 [node name="Screen" type="StaticBody3D" parent="MachineFace"]
 
@@ -564,3 +579,64 @@ stream = ExtResource("18_3fung")
 volume_db = -9.562
 pitch_scale = 0.41
 autoplay = true
+[node name="LightManager" parent="." instance=ExtResource("19_k3b85")]
+
+[node name="1" parent="LightManager" instance=ExtResource("20_84y6x")]
+transform = Transform3D(0.1169353, 0, 0, 0, 0.109239295, -0.041720983, 0, 0.041720983, 0.109239295, -0.2929465, 1.0773275, 0.0022654273)
+on_texture = ExtResource("15_3fung")
+off_texture = ExtResource("16_p1rvr")
+
+[node name="8" parent="LightManager" instance=ExtResource("20_84y6x")]
+transform = Transform3D(0.1169353, 0, 0, 0, 0.109239295, -0.041720983, 0, 0.041720983, 0.109239295, -0.43047285, 1.0450712, 0.086722925)
+on_texture = ExtResource("17_vqg52")
+off_texture = ExtResource("18_u4s1q")
+
+[node name="7" parent="LightManager" instance=ExtResource("20_84y6x")]
+transform = Transform3D(0.1169353, 0, 0, 0, 0.109239295, -0.041720983, 0, 0.041720983, 0.109239295, -0.49310863, 0.99097204, 0.22837253)
+on_texture = ExtResource("15_3fung")
+off_texture = ExtResource("16_p1rvr")
+
+[node name="6" parent="LightManager" instance=ExtResource("20_84y6x")]
+transform = Transform3D(0.1169353, 0, 0, 0, 0.109239295, -0.041720983, 0, 0.041720983, 0.109239295, -0.44136596, 0.93098855, 0.3854289)
+on_texture = ExtResource("17_vqg52")
+off_texture = ExtResource("18_u4s1q")
+
+[node name="2" parent="LightManager" instance=ExtResource("20_84y6x")]
+transform = Transform3D(0.1169353, 0, 0, 0, 0.109239295, -0.041720983, 0, 0.041720983, 0.109239295, -0.15333514, 1.0446942, 0.08771019)
+on_texture = ExtResource("17_vqg52")
+off_texture = ExtResource("18_u4s1q")
+
+[node name="3" parent="LightManager" instance=ExtResource("20_84y6x")]
+transform = Transform3D(0.1169353, 0, 0, 0, 0.109239295, -0.041720983, 0, 0.041720983, 0.109239295, -0.08957212, 0.9893104, 0.23272349)
+on_texture = ExtResource("15_3fung")
+off_texture = ExtResource("16_p1rvr")
+
+[node name="4" parent="LightManager" instance=ExtResource("20_84y6x")]
+transform = Transform3D(0.1169353, 0, 0, 0, 0.109239295, -0.041720983, 0, 0.041720983, 0.109239295, -0.16011086, 0.9339265, 0.37773672)
+on_texture = ExtResource("17_vqg52")
+off_texture = ExtResource("18_u4s1q")
+
+[node name="5" parent="LightManager" instance=ExtResource("20_84y6x")]
+transform = Transform3D(0.1169353, 0, 0, 0, 0.109239295, -0.041720983, 0, 0.041720983, 0.109239295, -0.29430175, 0.90496737, 0.4535613)
+on_texture = ExtResource("15_3fung")
+off_texture = ExtResource("16_p1rvr")
+
+[node name="12" parent="LightManager" instance=ExtResource("19_p1rvr")]
+transform = Transform3D(0.10199447, 0.0008954331, 0, -0.0008365009, 0.09528178, -0.036391698, -0.00031947883, 0.036390293, 0.09528546, 0, 0.86024046, 1.0106405)
+on_texture = ExtResource("17_vqg52")
+off_texture = ExtResource("18_u4s1q")
+
+[node name="11" parent="LightManager" instance=ExtResource("19_p1rvr")]
+transform = Transform3D(0.1019984, 0, 0, 0, 0.09528546, -0.036391698, 0, 0.036391698, 0.09528546, -0.28847528, 0.8655222, 1.0126578)
+on_texture = ExtResource("17_vqg52")
+off_texture = ExtResource("18_u4s1q")
+
+[node name="10" parent="LightManager" instance=ExtResource("19_p1rvr")]
+transform = Transform3D(0.1019984, 0, 0, 0, 0.09528546, -0.036391698, 0, 0.036391698, 0.09528546, -0.578477, 0.8693798, 1.0141311)
+on_texture = ExtResource("17_vqg52")
+off_texture = ExtResource("18_u4s1q")
+
+[node name="9" parent="LightManager" instance=ExtResource("19_p1rvr")]
+transform = Transform3D(0.1019984, 0, 0, 0, 0.09528546, -0.036391698, 0, 0.036391698, 0.09528546, -0.88447225, 0.87085116, 1.014693)
+on_texture = ExtResource("17_vqg52")
+off_texture = ExtResource("18_u4s1q")

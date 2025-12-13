@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq5umqcro8yes"]
+
+[ext_resource type="PackedScene" uid="uid://defp8xeg8evxh" path="res://TrackLights/TriangleTrackLight.glb" id="1_1n4f7"]
+[ext_resource type="Script" uid="uid://cta15qqe5yyff" path="res://TrackLights/track_light.gd" id="2_2p33w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2p33w"]
+albedo_color = Color(0.18538326, 0.18538326, 0.18538326, 1)
+
+[node name="TriangleTrackLight" instance=ExtResource("1_1n4f7")]
+script = ExtResource("2_2p33w")
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2p33w")
