@@ -27,14 +27,18 @@ func _exit_menu():
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_in_range = true
+		print("Player is in range")
 
 func _on_body_exited(body):
 	if body.name == "Player":
 		player_in_range = false
+		print("Player is not in range")
 		
 func try_interact():
 	if player_in_range:
 		activate_pinball()
+	elif not player_in_range:
+		pass
 		
 func activate_pinball():
 	var world_cam = get_viewport().get_camera_3d()

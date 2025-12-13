@@ -2,9 +2,12 @@ extends Node3D
 var fire_in_the_hole = false
 var can_bump = false
 var launching = false
-
+var start_local_position = Vector3(0.479, 0.797, 0.908)
+var start_global_position: Vector3
 @onready var _ball: RigidBody3D = $Ball
 @onready var _bumper1: Area3D = $Bumper1/LeftBumpArea
+@onready var _camera: CSGBox3D = $CameraMount
+
 
 func _ready():
 	$MachineFace/FiringHole.body_entered.connect(_on_body_entered)
@@ -16,7 +19,7 @@ func _ready():
 	$wireframe/launcher.body_entered.connect(_on_track_trigger_body_entered)
 	$wireframe/launcher.body_entered.connect(_on_track_trigger_body_entered)
 
-	
+	start_global_position = to_global(start_local_position)
 
 
 func _on_body_entered(body):
@@ -57,10 +60,14 @@ func _input(event: InputEvent) -> void:
 			print("FIRING")
 		else:  
 			pass
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("jump") and fire_in_the_hole:
+	if event.is_action_pressed("ui_r"):
+		
+		_ball.global_transform.origin = start_global_position
+		_ball.linear_velocity=Vector3.ZERO
+func _physics_process(delta: float) -> void: 
+	if Input.is_action_just_pressed("jump") and fire_in_the_hole and _camera.is_viewing:
 		var direction := -transform.basis.z.normalized()
-		var strength := 10
+		var strength := 8
 		_ball.apply_impulse(direction * strength)
 
 

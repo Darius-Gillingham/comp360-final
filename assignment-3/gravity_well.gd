@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var G: float = 10.0               
+@export var G: float = 5.0               
 @export var min_radius: float = 0.6       
 @export var max_force: float = 120.0      
 @export var vertical_lock: bool = true   
