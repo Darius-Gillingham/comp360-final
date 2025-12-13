@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ckevivcewvv61" path="res://WIPTextures/Purple/texture_09.png" id="4_b44ii"]
 [ext_resource type="Texture2D" uid="uid://b87e5o5x8flka" path="res://WIPTextures/Red/texture_09.png" id="5_6ltt8"]
 [ext_resource type="Script" uid="uid://66qbl2x4iwkj" path="res://Pinball/bumper1_movement.gd" id="6_fc0ay"]
-[ext_resource type="Script" path="res://Pinball/ball.gd" id="6_n0ksu"]
+[ext_resource type="Script" uid="uid://22vlynlkpf0a" path="res://Pinball/ball.gd" id="6_n0ksu"]
 [ext_resource type="Script" uid="uid://ffy3y40p7knd" path="res://Pinball/bumper2_movement.gd" id="7_n0ksu"]
 [ext_resource type="PackedScene" uid="uid://dh43ar7y3a54l" path="res://meshes/flapper.glb" id="8_go4m7"]
 [ext_resource type="Material" uid="uid://dy43u7r6aprtp" path="res://Pinball/metal.tres" id="10_fhbxo"]
@@ -72,7 +72,7 @@ albedo_texture = ExtResource("5_6ltt8")
 radius = 0.05
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ltt8"]
-size = Vector3(2.4436216, 1.4842529, 1.9838696)
+size = Vector3(2.4436216, 0.9916382, 1.9838696)
 
 [sub_resource type="PrismMesh" id="PrismMesh_b44ii"]
 
@@ -95,7 +95,7 @@ _data = {
 point_count = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n0ksu"]
-size = Vector3(0.19824219, 0.22338867, 0.1484375)
+size = Vector3(0.19824219, 0.16064453, 0.045776367)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ut2x7"]
 
@@ -306,7 +306,7 @@ depth = 0.3
 transform = Transform3D(1, 0, 0, 0, -0.051098526, 0.9986937, 0, -0.9986937, -0.051098526, -1.0786979, 1.260828, -0.7871783)
 material_override = SubResource("StandardMaterial3D_ut2x7")
 use_collision = true
-polygon = PackedVector2Array(-0.06500393, -0.21858925, -0.06019807, 0.9877875, 1.4090588, 0.97897744, 1.1185554, 0.93750405, 0.891645, 0.8672807, 0.6842492, 0.8569367, 0.5249979, 0.92593193, 0.33134136, 0.9257052, 0.16712272, 0.9518707, 0.056716025, 0.9128268, 0.028775632, 0.80831647, 0.016870081, 0.68717957, 0.11796361, 0.5927738, 0.42200574, 0.6161026, 0.17806679, 0.49686694, 0.024442613, 0.29080868, 0.01340735, -0.011187196)
+polygon = PackedVector2Array(-0.06500393, -0.21858925, -0.06019807, 0.9877875, 1.4257314, 1.0082456, 1.143283, 0.9018868, 0.9095801, 0.78581953, 0.6920355, 0.831143, 0.5249979, 0.92593193, 0.33134136, 0.9257052, 0.16712272, 0.9518707, 0.056716025, 0.9128268, 0.028775632, 0.80831647, 0.016870081, 0.68717957, 0.11796361, 0.5927738, 0.42200574, 0.6161026, 0.17806679, 0.49686694, 0.024442613, 0.29080868, 0.01340735, -0.011187196)
 depth = 0.3
 
 [node name="CSGPolygon3D5" type="CSGPolygon3D" parent="MachineFace"]
@@ -339,7 +339,7 @@ script = ExtResource("6_fc0ay")
 active_angle = -35.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bumper1"]
-transform = Transform3D(0.14949451, -0.0009844201, 0.0028643645, -0.0005774442, -0.16995212, -0.00083499216, 0.01229284, 0.003988471, -0.034873053, 0.15710041, 0.043252587, 0.002131492)
+transform = Transform3D(0.14901069, -0.01365572, 0.0028643648, -0.011793267, -0.169427, -0.00083499216, 0.012521649, 0.0029351157, -0.034873053, 0.15685794, 0.0013921261, 0.0031138659)
 shape = SubResource("BoxShape3D_6ltt8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bumper1"]
@@ -351,7 +351,7 @@ mesh = SubResource("PrismMesh_b44ii")
 transform = Transform3D(-1.0605512, -0.04529413, -0.41023767, 0.1060526, -0.9972831, -0.019847061, -0.17690024, -0.028463062, 0.8715023, 0.08929491, 0.015493558, 0.016582755)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Bumper1/LeftBumpArea"]
-transform = Transform3D(0.95760155, 0, -0.28809598, -2.9802322e-08, 1, 0, 0.28809613, 0, 0.9576014, -0.0647196, -0.03493905, -0.030601025)
+transform = Transform3D(0.98878247, 0, -0.14936279, -2.9802322e-08, 1, 0, 0.14936289, 0, 0.9887823, -0.05454781, -0.025650574, -0.064411014)
 shape = SubResource("BoxShape3D_jliil")
 
 [node name="flapper" parent="Bumper1" instance=ExtResource("8_go4m7")]
@@ -376,7 +376,7 @@ shape = SubResource("BoxShape3D_6ltt8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08431569, 0, -3.7252903e-09)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bumper2/RightBumpArea"]
-transform = Transform3D(0.97383904, 0.037569955, -0.22412336, -0.036984473, 0.9992931, 0.0068080127, 0.22421959, 0.0016614199, 0.9745383, 0.0529501, -0.024705887, -0.007395178)
+transform = Transform3D(0.97020185, -0.0920981, -0.22412336, 0.09605949, 0.9953529, 0.006808009, 0.2224537, -0.028131982, 0.9745383, 0.05219063, -0.016497929, -0.0076271626)
 shape = SubResource("BoxShape3D_fc0ay")
 
 [node name="flapper" parent="Bumper2" instance=ExtResource("8_go4m7")]
@@ -397,19 +397,6 @@ use_collision = true
 polygon = PackedVector2Array(0.018368542, -0.12581229, 0.0087201595, 0.60728455, 0.52858996, 0.31366193, 0.5574877, -0.11367196)
 depth = 0.25
 material = SubResource("StandardMaterial3D_84y6x")
-
-[node name="Elevated Platform" type="CSGPolygon3D" parent="."]
-transform = Transform3D(0.22578973, -0.021082059, -0.973948, -0.28223547, 0.9554725, -0.08611255, 0.9323959, 0.29432598, 0.20978566, -0.70365703, 1.376582, -0.56067145)
-polygon = PackedVector2Array(0.08441329, -0.11885071, 0.61178017, -0.17328048, 0.077560425, 0.11699462)
-depth = 0.2
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Elevated Platform"]
-transform = Transform3D(0.9747705, 0.22295383, -0.010674983, -0.2232069, 0.97342706, -0.051170588, -0.0010174066, 0.052262425, 0.99863285, -0.03948784, 0.10748482, 0.07306082)
-size = Vector3(0.20947266, 0.026495118, 0.49253845)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Elevated Platform"]
-transform = Transform3D(0.112970375, -0.09909071, 0.98864543, -0.040502045, 0.99372524, 0.104229584, -0.992774, -0.051816817, 0.10824801, 0.15744364, 0.137555, 0.28917915)
-size = Vector3(0.2512207, 0.020635743, 0.8798485)
 
 [node name="Crane" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31392574, 1.9485056, -1.6081654)
@@ -434,7 +421,7 @@ curve = SubResource("Curve3D_n0ksu")
 transform = Transform3D(0.9863585, 0.08094225, 0.14333607, 0.021087859, 0.8014471, -0.597694, -0.16325496, 0.59256315, 0.7888071, -0.96768236, -0.1598136, -0.5614042)
 
 [node name="CSGPolygon3D4" type="CSGPolygon3D" parent="wireframe/BasePath"]
-transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3658015, -1.416605, -0.062558174)
+transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026753694, 0.002860546, -0.06663227)
 polygon = PackedVector2Array(-0.010567367, 0.028729245, -0.001369427, 0.03467475, 0.008875638, 0.027120542, 0.008430226, 0.015234577, -0.0012551174, 0.011887036, -0.0089035835, 0.019471183)
 mode = 2
 path_node = NodePath("..")
@@ -443,14 +430,14 @@ path_interval = 0.01
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
 material = ExtResource("10_fhbxo")
 
 [node name="CSGPolygon3D5" type="CSGPolygon3D" parent="wireframe/BasePath"]
-transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, -0.36165568, -1.4480959, -0.07980883)
+transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, -0.02121374, -0.011590958, -0.067204475)
 polygon = PackedVector2Array(-0.010567367, 0.028729245, -0.001369427, 0.03467475, 0.008875638, 0.027120542, 0.008430226, 0.015234577, -0.0012551174, 0.011887036, -0.0089035835, 0.019471183)
 mode = 2
 path_node = NodePath("..")
@@ -459,7 +446,7 @@ path_interval = 0.01
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
@@ -469,7 +456,7 @@ material = ExtResource("10_fhbxo")
 transform = Transform3D(0.99951035, -1.8626451e-09, 0.03128863, 0.008098097, 0.9659258, -0.2586923, -0.030222505, 0.25881907, 0.9654529, 0.019960504, 0.1981951, -0.47800487)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wireframe/launcher"]
-transform = Transform3D(0.9999975, 0, 0, -1.3969839e-08, 0.9999994, 0, -6.3329935e-08, 0, 0.9999999, -0.9606517, 1.0940572, -0.18379593)
+transform = Transform3D(0.999992, 0, 0, -1.3969839e-08, 0.9999994, 0, -2.3469329e-07, 0, 0.9999999, -0.9872173, 1.0626845, -0.31823593)
 shape = SubResource("BoxShape3D_n0ksu")
 
 [node name="Bouncers" type="Node3D" parent="."]
@@ -478,13 +465,13 @@ shape = SubResource("BoxShape3D_n0ksu")
 transform = Transform3D(1, 0, 0, 0, 0.9162858, -0.400525, 0, 0.400525, 0.9162858, -0.3015045, 1.3757257, -0.6925814)
 
 [node name="AttackBumper5" parent="Bouncers" instance=ExtResource("10_jliil")]
-transform = Transform3D(1, 0, 0, 0, 0.9162858, -0.400525, 0, 0.400525, 0.9162858, -0.95797104, 1.4582956, -0.88147736)
+transform = Transform3D(1, 0, 0, 0, 0.9162858, -0.400525, 0, 0.400525, 0.9162858, -0.7803409, 1.5149326, -1.0110465)
 
 [node name="AttackBumper2" parent="Bouncers" instance=ExtResource("10_jliil")]
 transform = Transform3D(1, 0, 0, 0, 0.9163627, -0.400349, 0, 0.400349, 0.9163627, -0.088820815, 1.5314478, -0.9819029)
 
 [node name="AttackBumper3" parent="Bouncers" instance=ExtResource("10_jliil")]
-transform = Transform3D(1, 0, 0, 0, 0.9163627, -0.400349, 0, 0.400349, 0.9163627, -0.5230048, 1.5314478, -0.9819029)
+transform = Transform3D(1, 0, 0, 0, 0.9163627, -0.400349, 0, 0.400349, 0.9163627, -0.97940046, 1.1635607, -0.13984263)
 
 [node name="AttackBumper4" parent="Bouncers" instance=ExtResource("10_jliil")]
 transform = Transform3D(1, 0, 0, 0, 0.9163627, -0.400349, 0, 0.400349, 0.9163627, -0.87465775, 1.6851028, -1.3336053)
@@ -498,6 +485,7 @@ transform = Transform3D(-0.89806604, -1.8626451e-08, 0.4398607, 0.11384433, 0.96
 [node name="Gravity Well" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1734314, 1.50527, 0.6524811)
 script = ExtResource("13_k3b85")
+G = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gravity Well"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.93388367, -0.3451004, -1.280838)
@@ -563,5 +551,5 @@ surface_material_override/0 = SubResource("ShaderMaterial_u4s1q")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_3fung")
-volume_db = -1.0
+volume_db = -21.037
 autoplay = true
