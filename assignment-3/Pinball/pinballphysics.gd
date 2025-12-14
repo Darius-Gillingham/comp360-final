@@ -57,11 +57,13 @@ func _on_path_exit(body):
 		print("AGGGGGGGGGGGG")
 		_ball.apply_impulse(direction * 2)
 		
-func _on_fail_entered(_body):
-	_light_manager.light_state = LightsData.LightState.FAIL
+func _on_fail_entered(body):
+	if body.name =="Ball":
+		_light_manager.light_state = LightsData.LightState.FAIL
 	
-func _on_fail_exited(_body):
-	_light_manager.light_state = LightsData.LightState.IDLE
+func _on_fail_exited(body):
+	if body.name =="Ball":
+		_light_manager.light_state = LightsData.LightState.IDLE
 
 
 func _input(event: InputEvent) -> void:
@@ -74,7 +76,8 @@ func _input(event: InputEvent) -> void:
 		
 		_ball.global_transform.origin = start_global_position
 		_ball.linear_velocity=Vector3.ZERO
-func _physics_process(delta: float) -> void: 
+		
+func _physics_process(_delta: float) -> void: 
 	if Input.is_action_just_pressed("jump") and fire_in_the_hole and _camera.is_viewing:
 		var direction := -transform.basis.z.normalized()
 		var strength := 8

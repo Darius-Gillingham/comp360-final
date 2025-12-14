@@ -23,7 +23,7 @@ func _tick_lights() -> void:
 		active_light.turn_off()
 		active_lights.erase(active_light)
 	
-	if light_state == LightsData.LightState.OFF or not next_light_action:
+	if light_state == LightsData.LightState.OFF:
 		last_light_i = 0
 		return
 	

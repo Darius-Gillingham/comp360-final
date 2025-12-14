@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d30lvj5bgi4nd"]
+
+[ext_resource type="PackedScene" uid="uid://8gdui4yc602q" path="res://Particles/star_particle.glb" id="1_7xf03"]
+[ext_resource type="ArrayMesh" uid="uid://cgk43cedhhhnd" path="res://Particles/star_mesh.tres" id="2_kl44d"]
+
+[node name="star_particle" instance=ExtResource("1_7xf03")]
+
+[node name="Circle_003" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("2_kl44d")
+
+[node name="star_particle" parent="." index="1" instance=ExtResource("1_7xf03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

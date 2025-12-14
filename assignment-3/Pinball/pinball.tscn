@@ -14,17 +14,17 @@
 [ext_resource type="PackedScene" uid="uid://cq10hpdy7wvf8" path="res://triangle_bumper.tscn" id="11_n4d2f"]
 [ext_resource type="Script" uid="uid://bd28dxqv2s3dn" path="res://gravity_well.gd" id="13_k3b85"]
 [ext_resource type="Shader" uid="uid://mh275qf1i8qs" path="res://gravity_well.gdshader" id="14_84y6x"]
-[ext_resource type="Shader" uid="uid://dvndpqdvetyh7" path="res://Pinball/glass.gdshader" id="15_84y6x"]
-[ext_resource type="Script" uid="uid://dw42wv34srlcv" path="res://Pinball/booster.gd" id="16_t2w07"]
-[ext_resource type="Shader" uid="uid://cut3gkdljjxq8" path="res://booster.gdshader" id="17_3fung"]
-[ext_resource type="AudioStream" uid="uid://c1ny4xu634h8w" path="res://audio/pinball_music.ogg" id="18_3fung"]
-[ext_resource type="PackedScene" uid="uid://c3ax6edcib114" path="res://TrackLights/light_manager.tscn" id="19_k3b85"]
-[ext_resource type="PackedScene" uid="uid://coesoaga6pur8" path="res://TrackLights/track_light.tscn" id="20_84y6x"]
 [ext_resource type="Material" uid="uid://u1fjs1uau1w0" path="res://TrackLights/Materials/purple_light.tres" id="15_3fung"]
+[ext_resource type="Shader" uid="uid://dvndpqdvetyh7" path="res://Pinball/glass.gdshader" id="15_84y6x"]
 [ext_resource type="Material" uid="uid://cdlgulf7jy2xu" path="res://TrackLights/Materials/purple_dark.tres" id="16_p1rvr"]
+[ext_resource type="Script" path="res://Pinball/booster.gd" id="16_t2w07"]
+[ext_resource type="Shader" path="res://booster.gdshader" id="17_3fung"]
 [ext_resource type="Material" uid="uid://jemwncpgmegw" path="res://TrackLights/Materials/yellow_light.tres" id="17_vqg52"]
+[ext_resource type="AudioStream" uid="uid://c1ny4xu634h8w" path="res://audio/pinball_music.ogg" id="18_3fung"]
 [ext_resource type="Material" uid="uid://conh13hstx8yd" path="res://TrackLights/Materials/yellow_dark.tres" id="18_u4s1q"]
+[ext_resource type="PackedScene" uid="uid://c3ax6edcib114" path="res://TrackLights/light_manager.tscn" id="19_k3b85"]
 [ext_resource type="PackedScene" uid="uid://cq5umqcro8yes" path="res://TrackLights/triangle_track_light.tscn" id="19_p1rvr"]
+[ext_resource type="PackedScene" uid="uid://coesoaga6pur8" path="res://TrackLights/track_light.tscn" id="20_84y6x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
 albedo_texture = ExtResource("1_nnd53")
@@ -67,13 +67,14 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_nnd53"]
 size = Vector3(0.12670898, 0.19335938, 0.055664063)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_knuv2"]
+size = Vector3(1.655291, 0.3458229, 0.34556884)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqg52"]
 albedo_texture = ExtResource("5_6ltt8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4s1q"]
 albedo_texture = ExtResource("5_6ltt8")
-[sub_resource type="BoxShape3D" id="BoxShape3D_p1rvr"]
-size = Vector3(1.6767578, 0.10032654, 0.34057617)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut2x7"]
 albedo_texture = ExtResource("5_6ltt8")
@@ -131,7 +132,7 @@ shader_parameter/clearcoat_roughness = 0.05
 render_priority = 0
 shader = ExtResource("15_84y6x")
 shader_parameter/opacity = 0.12
-shader_parameter/roughness = 0.04
+shader_parameter/roughness = 0.0
 shader_parameter/metallic = 1.0
 shader_parameter/specular = 0.9
 shader_parameter/fresnel_power = 5.0
@@ -189,7 +190,7 @@ shader_parameter/tint = Color(0.85, 0.95, 1, 1)
 data = PackedVector3Array(-0.9, 0.29999998, 0.005, 0.9, 0.29999998, 0.005, -0.9, -0.29999998, 0.005, 0.9, 0.29999998, 0.005, 0.9, -0.29999998, 0.005, -0.9, -0.29999998, 0.005, 0.9, 0.29999998, -0.005, -0.9, 0.29999998, -0.005, 0.9, -0.29999998, -0.005, -0.9, 0.29999998, -0.005, -0.9, -0.29999998, -0.005, 0.9, -0.29999998, -0.005, 0.9, 0.29999998, 0.005, 0.9, 0.29999998, -0.005, 0.9, -0.29999998, 0.005, 0.9, 0.29999998, -0.005, 0.9, -0.29999998, -0.005, 0.9, -0.29999998, 0.005, -0.9, 0.29999998, -0.005, -0.9, 0.29999998, 0.005, -0.9, -0.29999998, -0.005, -0.9, 0.29999998, 0.005, -0.9, -0.29999998, 0.005, -0.9, -0.29999998, -0.005, 0.9, 0.29999998, 0.005, -0.9, 0.29999998, 0.005, 0.9, 0.29999998, -0.005, -0.9, 0.29999998, 0.005, -0.9, 0.29999998, -0.005, 0.9, 0.29999998, -0.005, -0.9, -0.29999998, 0.005, 0.9, -0.29999998, 0.005, -0.9, -0.29999998, -0.005, 0.9, -0.29999998, 0.005, 0.9, -0.29999998, -0.005, -0.9, -0.29999998, -0.005)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1rvr"]
-size = Vector3(0.1, 0.4, 0.1)
+size = Vector3(0.14261323, 0.37414438, 0.24325256)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vqg52"]
 
@@ -302,8 +303,8 @@ shape = SubResource("BoxShape3D_nnd53")
 [node name="Fail" type="Area3D" parent="MachineFace"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MachineFace/Fail"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26123047, 1.176236, 0.9038305)
-shape = SubResource("BoxShape3D_p1rvr")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30288428, 1.1085696, 0.8499181)
+shape = SubResource("BoxShape3D_knuv2")
 
 [node name="Screen" type="StaticBody3D" parent="MachineFace"]
 
@@ -566,7 +567,7 @@ shape = SubResource("ConcavePolygonShape3D_iil8w")
 script = ExtResource("16_t2w07")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="booster"]
-transform = Transform3D(1, 0, 0, 0, 0.3866949, 0.92220765, 0, -0.92220765, 0.3866949, 0.4651311, 1.1610774, 0.023320079)
+transform = Transform3D(1, 0, 0, 0, 0.3866949, 0.92220765, 0, -0.92220765, 0.3866949, 0.4651311, 1.1347389, -0.046162434)
 shape = SubResource("BoxShape3D_p1rvr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="booster"]
@@ -579,6 +580,7 @@ stream = ExtResource("18_3fung")
 volume_db = -9.562
 pitch_scale = 0.41
 autoplay = true
+
 [node name="LightManager" parent="." instance=ExtResource("19_k3b85")]
 
 [node name="1" parent="LightManager" instance=ExtResource("20_84y6x")]

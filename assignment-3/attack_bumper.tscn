@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6nnem8lslq7p"]
+[gd_scene load_steps=12 format=3 uid="uid://6nnem8lslq7p"]
 
 [ext_resource type="Script" uid="uid://cpdgg41487hov" path="res://attack_bumper.gd" id="1_0ctjr"]
 [ext_resource type="PackedScene" uid="uid://bybu65qcpkxe8" path="res://meshes/roundBumper.glb" id="1_s6vjs"]
+[ext_resource type="ArrayMesh" uid="uid://cgk43cedhhhnd" path="res://Particles/star_mesh.tres" id="3_et6t4"]
+[ext_resource type="PackedScene" uid="uid://8gdui4yc602q" path="res://Particles/star_particle.glb" id="4_cf7do"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_whtcl"]
 height = 0.10568237
@@ -10,6 +12,41 @@ radius = 0.10546875
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_et6t4"]
 height = 0.0769043
 radius = 0.09472656
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b04pv"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, 1)
+flatness = 1.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.049999997
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hmbjp"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, 1)
+flatness = 1.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.049999997
+
+[sub_resource type="Curve" id="Curve_2foxd"]
+_data = [Vector2(0, 0.56878734), 0.0, -0.51888746, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.1235014, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34ddp"]
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_0yx2w"]
+material = SubResource("StandardMaterial3D_34ddp")
+flip_faces = true
+section_segments = 5
+curve = SubResource("Curve_2foxd")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_0ctjr")
@@ -31,3 +68,37 @@ shape = SubResource("CylinderShape3D_et6t4")
 
 [node name="roundBumper" parent="Attack_Bumper" instance=ExtResource("1_s6vjs")]
 transform = Transform3D(0.06, 0, 0, 0, 0.060000006, 0, 0, 0, 0.060000006, 0.009519219, -0.03920564, 0.07315083)
+
+[node name="StarParticle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0058236346, 0)
+cast_shadow = 0
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+use_fixed_seed = true
+seed = 4085287734
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_b04pv")
+draw_pass_1 = ExtResource("3_et6t4")
+
+[node name="TrailParticle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0058236346, 0)
+cast_shadow = 0
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+use_fixed_seed = true
+seed = 4085287734
+visibility_aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)
+local_coords = true
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_hmbjp")
+draw_pass_1 = SubResource("RibbonTrailMesh_0yx2w")
+
+[node name="star_particle" parent="." instance=ExtResource("4_cf7do")]
+visible = false
