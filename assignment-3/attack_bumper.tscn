@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cpdgg41487hov" path="res://attack_bumper.gd" id="1_0ctjr"]
 [ext_resource type="PackedScene" uid="uid://bybu65qcpkxe8" path="res://meshes/roundBumper.glb" id="1_s6vjs"]
-[ext_resource type="ArrayMesh" uid="uid://cgk43cedhhhnd" path="res://Particles/star_mesh.tres" id="3_et6t4"]
+[ext_resource type="ArrayMesh" uid="uid://75pjw5wgwoe3" path="res://Particles/star_mesh_particle.tres" id="3_et6t4"]
 [ext_resource type="PackedScene" uid="uid://8gdui4yc602q" path="res://Particles/star_particle.glb" id="4_cf7do"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_whtcl"]

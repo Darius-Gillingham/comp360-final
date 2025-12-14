@@ -55,7 +55,6 @@ func _on_body_entered(body):
 		
 		var undo_tween = round_bumper.create_tween()
 		
-		print("smol")
 		undo_tween.tween_property(round_bumper, "scale", start_scale, 0.1)
 		
 		await undo_tween.finished

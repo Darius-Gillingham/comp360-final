@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=70 format=4 uid="uid://buxknvxe6gbue"]
 
 [ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
 [ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ax6edcib114" path="res://TrackLights/light_manager.tscn" id="19_k3b85"]
 [ext_resource type="PackedScene" uid="uid://cq5umqcro8yes" path="res://TrackLights/triangle_track_light.tscn" id="19_p1rvr"]
 [ext_resource type="PackedScene" uid="uid://coesoaga6pur8" path="res://TrackLights/track_light.tscn" id="20_84y6x"]
+[ext_resource type="PackedScene" uid="uid://4j7eui7bahue" path="res://teleport_gate.tscn" id="26_iil8w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
 albedo_texture = ExtResource("1_nnd53")
@@ -216,7 +217,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 252.0
 
 [node name="CameraMount" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23999453, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23999453, 0, 0.002334416)
 visible = false
 material = SubResource("StandardMaterial3D_vm7tp")
 script = ExtResource("2_48gu3")
@@ -247,7 +248,7 @@ use_collision = true
 size = Vector3(0.1, 0.2, 2.9799805)
 
 [node name="RightWall" type="CSGBox3D" parent="MachineFace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.596, 1.17, -0.37345508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5964884, 1.169375, -0.37360528)
 material_override = SubResource("StandardMaterial3D_go4m7")
 use_collision = true
 size = Vector3(0.1, 0.2, 2.9829102)
@@ -426,11 +427,13 @@ radius = 0.107421875
 height = 0.7086792
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(0.9884346, 0.016066432, -0.15079464, -0.069914736, 0.9306683, -0.35912168, 0.13456994, 0.36551112, 0.92102796, 0.28009552, 1.1075163, 0.038017035)
+transform = Transform3D(0.9884345, 0.01606642, -0.15079458, -0.069914736, 0.9306683, -0.35912177, 0.13456994, 0.36551112, 0.9210279, 0.28009552, 1.1075163, 0.038017035)
+visible = false
 size = Vector3(0.18276978, 0.111083984, 0.10650635)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(0.83730364, 0.039270718, 0.545326, 0.16207948, 0.93475336, -0.31617463, -0.52216166, 0.3531204, 0.77630746, -0.5855026, 1.6688939, -1.3569691)
+visible = false
 size = Vector3(0.19900513, 0.10864258, 0.10015869)
 
 [node name="wireframe" type="Node3D" parent="."]
@@ -642,3 +645,11 @@ off_texture = ExtResource("18_u4s1q")
 transform = Transform3D(0.1019984, 0, 0, 0, 0.09528546, -0.036391698, 0, 0.036391698, 0.09528546, -0.88447225, 0.87085116, 1.014693)
 on_texture = ExtResource("17_vqg52")
 off_texture = ExtResource("18_u4s1q")
+
+[node name="TeleportGateBottom" parent="." node_paths=PackedStringArray("exit_gate") instance=ExtResource("26_iil8w")]
+transform = Transform3D(0.9884345, 0.01606642, -0.1507946, -0.069914736, 0.9306683, -0.3591218, 0.13456994, 0.36551112, 0.92102796, 0.28009552, 1.1075163, 0.038017035)
+exit_gate = NodePath("../TeleportGateTop")
+
+[node name="TeleportGateTop" parent="." node_paths=PackedStringArray("exit_gate") instance=ExtResource("26_iil8w")]
+transform = Transform3D(0.8373036, 0.039270803, 0.54532593, 0.16207947, 0.9347533, -0.3161747, -0.52216166, 0.3531204, 0.77630734, -0.5855026, 1.6688939, -1.3569691)
+exit_gate = NodePath("../TeleportGateBottom")

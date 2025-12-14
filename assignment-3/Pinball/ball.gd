@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Ball
 
 var on_track := false
 var follow_node : PathFollow3D
@@ -26,3 +27,4 @@ func exit_track():
 	on_track = false
 	freeze = false
 	set_freeze_mode(RigidBody3D.FREEZE_MODE_STATIC)
+		
