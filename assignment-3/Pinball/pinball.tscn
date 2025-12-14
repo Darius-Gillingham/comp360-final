@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://buxknvxe6gbue"]
+[gd_scene load_steps=71 format=4 uid="uid://buxknvxe6gbue"]
 
 [ext_resource type="Texture2D" uid="uid://dw4lgn0tf8a5f" path="res://WIPTextures/Orange/texture_09.png" id="1_nnd53"]
 [ext_resource type="Script" uid="uid://ddghs8ttnesce" path="res://Pinball/pinballphysics.gd" id="1_vm7tp"]
@@ -17,8 +17,8 @@
 [ext_resource type="Material" uid="uid://u1fjs1uau1w0" path="res://TrackLights/Materials/purple_light.tres" id="15_3fung"]
 [ext_resource type="Shader" uid="uid://dvndpqdvetyh7" path="res://Pinball/glass.gdshader" id="15_84y6x"]
 [ext_resource type="Material" uid="uid://cdlgulf7jy2xu" path="res://TrackLights/Materials/purple_dark.tres" id="16_p1rvr"]
-[ext_resource type="Script" path="res://Pinball/booster.gd" id="16_t2w07"]
-[ext_resource type="Shader" path="res://booster.gdshader" id="17_3fung"]
+[ext_resource type="Script" uid="uid://dw42wv34srlcv" path="res://Pinball/booster.gd" id="16_t2w07"]
+[ext_resource type="Shader" uid="uid://cut3gkdljjxq8" path="res://booster.gdshader" id="17_3fung"]
 [ext_resource type="Material" uid="uid://jemwncpgmegw" path="res://TrackLights/Materials/yellow_light.tres" id="17_vqg52"]
 [ext_resource type="AudioStream" uid="uid://c1ny4xu634h8w" path="res://audio/pinball_music.ogg" id="18_3fung"]
 [ext_resource type="Material" uid="uid://conh13hstx8yd" path="res://TrackLights/Materials/yellow_dark.tres" id="18_u4s1q"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cq5umqcro8yes" path="res://TrackLights/triangle_track_light.tscn" id="19_p1rvr"]
 [ext_resource type="PackedScene" uid="uid://coesoaga6pur8" path="res://TrackLights/track_light.tscn" id="20_84y6x"]
 [ext_resource type="PackedScene" uid="uid://4j7eui7bahue" path="res://teleport_gate.tscn" id="26_iil8w"]
+[ext_resource type="PackedScene" uid="uid://d35bvcwiff7oc" path="res://crane_arm.tscn" id="27_8qd2g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm7tp"]
 albedo_texture = ExtResource("1_nnd53")
@@ -128,6 +129,7 @@ shader_parameter/clearcoat = 0.6
 shader_parameter/clearcoat_roughness = 0.05
 
 [sub_resource type="BoxMesh" id="BoxMesh_ut2x7"]
+size = Vector3(1, 0.75, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t2w07"]
 render_priority = 0
@@ -140,8 +142,8 @@ shader_parameter/fresnel_power = 5.0
 shader_parameter/fresnel_boost = 1.0
 shader_parameter/tint = Color(0.85, 0.95, 1, 1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3fung"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8qd2g"]
+data = PackedVector3Array(-0.5, 0.375, 0.5, 0.5, 0.375, 0.5, -0.5, -0.375, 0.5, 0.5, 0.375, 0.5, 0.5, -0.375, 0.5, -0.5, -0.375, 0.5, 0.5, 0.375, -0.5, -0.5, 0.375, -0.5, 0.5, -0.375, -0.5, -0.5, 0.375, -0.5, -0.5, -0.375, -0.5, 0.5, -0.375, -0.5, 0.5, 0.375, 0.5, 0.5, 0.375, -0.5, 0.5, -0.375, 0.5, 0.5, 0.375, -0.5, 0.5, -0.375, -0.5, 0.5, -0.375, 0.5, -0.5, 0.375, -0.5, -0.5, 0.375, 0.5, -0.5, -0.375, -0.5, -0.5, 0.375, 0.5, -0.5, -0.375, 0.5, -0.5, -0.375, -0.5, 0.5, 0.375, 0.5, -0.5, 0.375, 0.5, 0.5, 0.375, -0.5, -0.5, 0.375, 0.5, -0.5, 0.375, -0.5, 0.5, 0.375, -0.5, -0.5, -0.375, 0.5, 0.5, -0.375, 0.5, -0.5, -0.375, -0.5, 0.5, -0.375, 0.5, 0.5, -0.375, -0.5, -0.5, -0.375, -0.5)
 
 [sub_resource type="PrismMesh" id="PrismMesh_p1rvr"]
 
@@ -414,17 +416,12 @@ depth = 0.25
 material = SubResource("StandardMaterial3D_84y6x")
 
 [node name="CSGBox3D2" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.35753682, 0.93389904, 0, -0.93389904, 0.35753682, -1.1910789, 0.9111471, 0.81537)
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, -1.1910789, 0.92289877, 0.81537)
 material_override = SubResource("StandardMaterial3D_k3b85")
 use_collision = true
 polygon = PackedVector2Array(0.018368542, -0.12581229, 0.0087201595, 0.60728455, 0.52858996, 0.31366193, 0.5574877, -0.11367196)
 depth = 0.25
 material = SubResource("StandardMaterial3D_84y6x")
-
-[node name="Crane" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31392574, 1.9485056, -1.6081654)
-radius = 0.107421875
-height = 0.7086792
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(0.9884345, 0.01606642, -0.15079458, -0.069914736, 0.9306683, -0.35912177, 0.13456994, 0.36551112, 0.9210279, 0.28009552, 1.1075163, 0.038017035)
@@ -527,14 +524,15 @@ mesh = SubResource("SphereMesh_t2w07")
 surface_material_override/0 = SubResource("ShaderMaterial_3fung")
 
 [node name="glass1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.8, 0, 0, 0, 1.4431499, 0.0087669315, 0, -2.6300795, 0.0048105, -0.34797317, 1.490415, -0.22719169)
+transform = Transform3D(1.8, 0, 0, 0, 1.4431499, 0.0087669315, 0, -2.6300795, 0.0048105, -0.28768712, 1.3777741, 0.042408198)
 mesh = SubResource("BoxMesh_ut2x7")
 surface_material_override/0 = SubResource("ShaderMaterial_t2w07")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="glass1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="glass1/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_3fung")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="glass1/StaticBody3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, -1.1641532e-10, 0, -7.6293945e-06, 0.99999994, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_8qd2g")
 
 [node name="glass2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.029384373, -0.043229327, 0.009977617, 0.40530476, -1.2938368, 0.0005271633, 0.1932993, 2.7063107, 0.0004114047, 0.55833, 1.4299264, -0.19543248)
@@ -653,3 +651,6 @@ exit_gate = NodePath("../TeleportGateTop")
 [node name="TeleportGateTop" parent="." node_paths=PackedStringArray("exit_gate") instance=ExtResource("26_iil8w")]
 transform = Transform3D(0.8373036, 0.039270803, 0.54532593, 0.16207947, 0.9347533, -0.3161747, -0.52216166, 0.3531204, 0.77630734, -0.5855026, 1.6688939, -1.3569691)
 exit_gate = NodePath("../TeleportGateBottom")
+
+[node name="CraneArm" parent="." instance=ExtResource("27_8qd2g")]
+transform = Transform3D(-0.29999998, 6.3527474e-23, -2.622683e-08, -1.1259945e-08, 0.27094442, 0.12879877, 2.3686711e-08, 0.12879877, -0.27094442, -0.30671257, 1.7185607, -1.7339084)
